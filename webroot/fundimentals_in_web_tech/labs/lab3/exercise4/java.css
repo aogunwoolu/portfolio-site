@@ -1,0 +1,13 @@
+@import "language.css";
+body{
+  background-color: #AD6800;
+}
+nav{
+  background-color: #9A5D00;
+}
+a:hover{
+  color: #F81B00;
+}
+#top_of_site,#information_block{
+  background-color: #D68100;
+}

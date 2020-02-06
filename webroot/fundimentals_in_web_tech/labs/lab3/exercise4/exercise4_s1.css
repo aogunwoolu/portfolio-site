@@ -1,19 +1,15 @@
 *{
   font: sans-serif;
 }
-h3{
-  color: #01223D;
-  padding-left: 4vw;
-}
-h4{
-  color: #005394;
-}
 body{
-  background-color: #D3E8F8;
+  background-color: #003366;
 }
 nav{
-  padding-left: 32vw;
+  text-align: center;
   background: #0691AA;
+  color: white;
+}
+footer{
   color: white;
 }
 a{
@@ -23,19 +19,32 @@ a:hover{
   color: hotpink;
 }
 ul{
+  text-align: inherit;
   padding-right: 4vw;
 }
-.personal_information{
-  background-color: #BCE0FC;
-  padding-left: 2vw;
+#title,#subtitle{
+  text-align: center;
+  color: #01223D;
+  font-size: 190%;
 }
-.qualifications,.dates{
-  color: #024172;
+#subtitle{
+  color: #01223D;
+  font-size: 100%;
+}
+#top_of_site,#information_block{
+  text-align: center;
+  width: 85vw;
+  background-color: #D3E8F8
+}
+
+#PS{
+  text-align: center;
+}
+
+#my_portrait{
+  padding-top: 4vw;
+}
+
+#whole_body{
   padding-left: 6vw;
-}
-.ps{
-  padding-right: 6vw;
-}
-div1{
-  padding-left: 8vw;
 }
