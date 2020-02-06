@@ -1,0 +1,38 @@
+*{
+  font: sans-serif;
+}
+h3{
+  color: #01223D;
+  padding-left: 4vw;
+}
+h4{
+  color: #005394;
+}
+body{
+  background-color: #D3E8F8;
+}
+nav{
+  padding-left: 32vw;
+  background: #0691AA;
+  color: white;
+}
+a{
+  color: inherit;
+}
+a:hover{
+  color: hotpink;
+}
+ul{
+  padding-right: 4vw;
+}
+.personal_information{
+  background-color: #BCE0FC;
+  padding-left: 2vw;
+}
+.qualifications,.dates{
+  color: #024172;
+  padding-left: 6vw;
+}
+.ps{
+  padding-right: 6vw;
+}
