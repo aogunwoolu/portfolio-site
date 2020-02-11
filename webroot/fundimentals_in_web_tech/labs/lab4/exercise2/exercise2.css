@@ -1,0 +1,34 @@
+#top,#bot,#items{
+  border: solid 1pt black;
+}
+#top{
+  background-color: #900C3F;
+  color: white;
+  text-align: center;
+}
+#bot{
+  padding-top: 2vw;
+}
+.tHeading{
+  border: solid 1pt black;
+  background-color: #BDBDBD;
+}
+.rank{
+  text-align: center;
+  width: 10%;
+}
+.movie{
+  text-align: center;
+  width: 20%;
+}
+.poster{
+  text-align: center;
+  width: 20%;
+}
+.cast{
+  text-align: center;
+  width: 40%;
+}
+table{
+  width: 100%
+}

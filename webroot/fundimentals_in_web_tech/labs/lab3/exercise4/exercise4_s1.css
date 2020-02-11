@@ -19,9 +19,20 @@ a:hover{
   color: hotpink;
 }
 ul{
+  list-style-type: none;
   text-align: inherit;
-  padding-right: 4vw;
 }
+h4{
+  font-family: Palatino,"Palatino Linotype";
+  font-weight: bold;
+  font-style: oblique;
+  font-size: 130%;
+}
+.dates,.qualifications{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 #title,#subtitle{
   text-align: center;
   color: #01223D;
@@ -39,6 +50,8 @@ ul{
 
 #PS{
   text-align: center;
+  padding-left: 15vw;
+  padding-right: 15vw;
 }
 
 #my_portrait{

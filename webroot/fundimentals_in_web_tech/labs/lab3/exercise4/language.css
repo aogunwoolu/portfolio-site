@@ -2,3 +2,7 @@
 .projectLink{
   text-decoration-line: none;
 }
+section{
+  padding-left: 15vw;
+  padding-right: 15vw;
+}

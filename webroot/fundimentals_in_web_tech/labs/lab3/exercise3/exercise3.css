@@ -7,8 +7,6 @@ p1{
 p2{
   background-color: green;
   color: white;
-  font-family: fantasy;
-  font-style: normal;
-  font-variant: normal;
+  font-family: fantasy,fantasy;
   font-size: 14;
 }
