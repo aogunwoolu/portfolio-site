@@ -6,29 +6,53 @@
   color: white;
   text-align: center;
 }
-#bot{
-  padding-top: 2vw;
+#actorContainer{
+  width: inherit;
+  height: inherit;
+  float: left;
+  border: solid 1pt black;
+}
+#Mimg,.Aimg{
+  clear: both;
+  border-radius: 5vw;
+}
+.Aimg{
+  height: 45vw;
+  width: 25vw;
+  border: solid 1pt grey;
+}
+.tCell{
+  border: solid 1pt black;
+  text-align: center;
 }
 .tHeading{
-  border: solid 1pt black;
   background-color: #BDBDBD;
 }
 .rank{
   text-align: center;
-  width: 10%;
+  width: auto;
 }
 .movie{
   text-align: center;
-  width: 20%;
+  width: auto;
 }
 .poster{
   text-align: center;
-  width: 20%;
+  width: auto;
 }
 .cast{
   text-align: center;
-  width: 40%;
+  width: auto;
+}
+.acell{
+
 }
 table{
-  width: 100%
+  width: 100%;
+}
+#actorTable{
+  padding-left: 4vw;
+  width:100%;
+  height: inherit;
+  border: solid 1pt black;
 }

@@ -1,0 +1,14 @@
+fieldset{
+  border-color: #29BA05;
+  background-color: #D5FFCA;
+}
+.submit{
+  background-color: white;
+
+}
+legend{
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #29BA05;
+}

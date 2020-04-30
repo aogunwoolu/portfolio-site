@@ -1,0 +1,33 @@
+div{
+  background-color: black;
+  color: white;
+}
+#Cap,#LE{
+  width: 30vw;
+}
+figure{
+  padding-left: 10%;
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+a{
+  color: white;
+}
+a:hover{
+  background-color: green;
+}
+article{
+  background-color: grey;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 26.4px;
+}
