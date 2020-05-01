@@ -29,10 +29,10 @@ $endPrint = "
             <li class='nav-item nav-link'>
               <a id= 'lk' href = ";
 if (!isset($_SESSION["user"])){
-	$endPrint = $endPrint."login.php";
+	$endPrint = $endPrint."http://cakephp-mysql-persistent-qboecs417.bde1.qmul-eecs.openshiftapps.com/loginout/login.php";
 }
 else{
-	$endPrint = $endPrint."viewBlog.php";
+	$endPrint = $endPrint."http://cakephp-mysql-persistent-qboecs417.bde1.qmul-eecs.openshiftapps.com/loginout/viewBlog.php";
 }
 $endPrint = $endPrint.">blog</a>
               </li>
