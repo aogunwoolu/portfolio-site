@@ -115,7 +115,7 @@ echo "
       <div class='collapse navbar-collapse' id='navbarNav'>
         <ul class='navbar-nav'>
           <li class='nav-item nav-link'>
-            <a id= 'lk' href = 'http://localhost/miniProject/index.php'>back to portfolio</a>
+            <a id= 'lk' href = 'http://cakephp-mysql-persistent-qboecs417.bde1.qmul-eecs.openshiftapps.com/index.php'>back to portfolio</a>
           </li>
         </ul>
       </div>

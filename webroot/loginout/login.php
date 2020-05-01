@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="login.css" type="text/css"/>
   </head>
   <body>
-    <form id = "login" method="POST" action="http://localhost/miniProject/loginout/login_process.php" method="post" >
+    <form id = "login" method="POST" action="http://cakephp-mysql-persistent-qboecs417.bde1.qmul-eecs.openshiftapps.com/loginout/login_process.php" method="post" >
       <div class="inputs">
         <legend class = "loginL title">Enter the dungeon...</legend>
         <div class="inputBar">
@@ -21,7 +21,7 @@
         <br>
         <button class = "loginL" type="submit">login</button>
       </div>
-      <a href="http://localhost/miniProject/loginout/create_account.php" class="inputs">Create Account</a>
+      <a href="http://cakephp-mysql-persistent-qboecs417.bde1.qmul-eecs.openshiftapps.com/loginout/create_account.php" class="inputs">Create Account</a>
     </form>
   </body>
 </html>

@@ -51,7 +51,7 @@
     // return $returner;
     }
     else {
-      echo "<form id = 'login' method'POST' action='http://localhost/miniProject/loginout/login_process.php' method='post' >
+      echo "<form id = 'login' method'POST' action='http://cakephp-mysql-persistent-qboecs417.bde1.qmul-eecs.openshiftapps.com/loginout/login_process.php' method='post' >
         <div class='inputs'>
           <legend class = 'loginL title'>Enter the dungeon...</legend>
           <div class='inputBar'>
@@ -68,7 +68,7 @@
 
           <p id = 'unsucc'>login U N S U C C E S S F U L</p>
         </div>
-        <a href='http://localhost/miniProject/loginout/create_account.html' class='inputs'>Create Account</a>
+        <a href='http://cakephp-mysql-persistent-qboecs417.bde1.qmul-eecs.openshiftapps.com/loginout/create_account.html' class='inputs'>Create Account</a>
       </form>";
     }
 

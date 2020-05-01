@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="login.css" type="text/css"/>
   </head>
   <body>
-    <form id = "login" method="POST" action="http://localhost/miniProject/loginout/create_account_process.php" method="post" >
+    <form id = "login" method="POST" action="http://cakephp-mysql-persistent-qboecs417.bde1.qmul-eecs.openshiftapps.com/loginout/create_account_process.php" method="post" >
       <div class="inputs">
         <legend class = "loginL title">Create your character!</legend>
         <div class="inputBar">
