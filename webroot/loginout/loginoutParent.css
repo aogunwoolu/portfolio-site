@@ -1,9 +1,0 @@
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@900&family=Oswald&display=swap');
-
-body{
-    background-image: url('../mainPageBack.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-}
