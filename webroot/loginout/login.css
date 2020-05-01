@@ -1,0 +1,26 @@
+@import url("loginoutParent.css");
+
+#login{
+  color: white;
+  background-color: rgba(246, 246, 246, 0.3);
+  border: solid 1px black;
+  margin: 10vw 30vw;
+}
+.title{
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  color: white;
+  padding-bottom: 20px;
+}
+.inputs{
+  text-align: center;
+}
+.loginL{
+  display: inline-block;
+  margin-right: 10px;
+}
+#unsucc{
+  font-family: 'Heebo', sans-serif;
+  color: red;
+  text-shadow: -1px -1px 0 white,-1px -1px 0 white,-1px -1px 0 white,-1px -1px 0 white;
+}
