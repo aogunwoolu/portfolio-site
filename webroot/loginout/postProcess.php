@@ -10,6 +10,14 @@
     session_start();
     include 'autoload.php';
 
+$servername = getenv("MYSQL_SERVICE_HOST");
+$dbport = getenv("MYSQL_SERVICE_PORT");
+$username = getenv("DATABASE_USER");
+$password = getenv("DATABASE_PASSWORD");
+$db = getenv("DATABASE_NAME");
+
+$conn = new mysqli($servername, $username, $password,$db);
+
     function idGen($conn){
         $value = mysqli_real_escape_string($conn,uniqid());
         $result = mysqli_query($conn,"SELECT `postID` FROM `posts` WHERE `postID` = '" . $value ."'");
@@ -21,12 +29,6 @@
         }
     }
 
-$servername = getenv("MYSQL_SERVICE_HOST");
-$dbport = getenv("MYSQL_SERVICE_PORT");
-$username = getenv("DATABASE_USER");
-$password = getenv("DATABASE_PASSWORD");
-$db = getenv("DATABASE_NAME");
-
     /*
    $servername = "localhost";
    $username = "root";
@@ -36,7 +38,6 @@ $db = getenv("DATABASE_NAME");
 
    $returner = array();
    // Create connection
-   $conn = new  mysqli($servername, $username, $password,$db);
 
    $postID = idGen($conn);
    $postDate = date("Y-m-d h:i:sa");
