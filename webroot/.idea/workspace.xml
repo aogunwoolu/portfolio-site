@@ -32,10 +32,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f6bbff4-050c-419b-a00c-9b0f6d124c03" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loginout/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/loginout/logout.php" afterDir="false" />
-    </list>
+    <list default="true" id="7f6bbff4-050c-419b-a00c-9b0f6d124c03" name="Default Changelist" comment="test1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,8 +98,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588341798865</updated>
-      <workItem from="1588341835895" duration="9189000" />
+      <workItem from="1588341835895" duration="9378000" />
     </task>
+    <task id="LOCAL-00001" summary="test1">
+      <created>1588432135750</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588432135857</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,7 +124,15 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test1" />
+    <option name="LAST_COMMIT_MESSAGE" value="test1" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="654" y="295" key="#Notifications" timestamp="1588432230488">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="654" y="295" key="#Notifications/0.0.1536.864@0.0.1536.864" timestamp="1588432230488" />
     <state width="342" height="208" key="Git.Branch.Popup" timestamp="1588432069866">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
