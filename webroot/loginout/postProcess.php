@@ -40,7 +40,7 @@ $conn = new mysqli($servername, $username, $password,$db);
    // Create connection
 
    $postID = idGen($conn);
-   $postDate = date("Y-m-d h:i:sa");
+   $postDate = date("Y-m-d h:i:s");
    $postTitle = mysqli_real_escape_string($conn,$_POST["titleToUpload"]);
    $postContents = mysqli_real_escape_string($conn,$_POST["postToUpload"]);
    $likes = 0;
