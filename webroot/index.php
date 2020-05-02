@@ -84,7 +84,7 @@ $endPrint = $endPrint.">blog</a>
                   </div>
                   <div class='media'>
                     <img src='https://cdn3.iconfinder.com/data/icons/logos-and-brands-adobe/512/267_Python-512.png' height='48px' width='48px' alt='2nd'>
-                    <p>python - OOP and procedural</p>
+                    <p>python - OOP & procedural</p>
                   </div>
                   <div class='media'>
                     <img src='https://cdn0.iconfinder.com/data/icons/web-development-glyph/32/search_web_development-512.png' height='48px' width='48px' alt='3rd'>
