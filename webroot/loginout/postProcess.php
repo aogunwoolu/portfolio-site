@@ -67,7 +67,7 @@ $conn = new mysqli($servername, $username, $password,$db);
 
    $conn->close();
 
-   header("Location: viewBlog.php");
+   //header("Location: viewBlog.php");
    exit;
 ?>
 </body>
