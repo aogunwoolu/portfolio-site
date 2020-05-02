@@ -46,6 +46,8 @@ $conn = new mysqli($servername, $username, $password,$db);
    $likes = 0;
    $dislikes = 0;
 
+   echo $postID;
+
    // Now check to see if the values match in your database
    // This assumes you have already written your connecting to database code
    $statement = "INSERT INTO posts (postID,postDate,postTitle,post,likes,dislikes) VALUES ('$postID','$postDate','$postTitle','$postContents',$likes,$dislikes)";

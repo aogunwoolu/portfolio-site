@@ -41,6 +41,8 @@ if (mysqli_num_rows($result2)>0) {
     while ($row = mysqli_fetch_row($result2)) {
         array_push($postArr, new post($row[0],$row[1],$row[2],$row[3],$row[4],$row[5]));
 
+        echo ($queryLength - $i);
+
         $postToPrint .= "
                 <div id = 'message".($queryLength - $i)."' class = 'glassBack'>
                     <h2>$row[2]</h2>
