@@ -41,14 +41,14 @@ if (mysqli_num_rows($result2)>0) {
     while ($row = mysqli_fetch_row($result2)) {
         array_push($postArr, new post($row[0],$row[1],$row[2],$row[3],$row[4],$row[5]));
 
-        echo ($queryLength - $i);
+        echo ($queryLength - $i -1);
 
         $postToPrint .= "
-                <div id = 'message".($queryLength - $i)."' class = 'glassBack'>
+                <div id = 'message".($queryLength - $i -1)."' class = 'glassBack'>
                     <h2>$row[2]</h2>
                     <p>$row[3]</p>
                     <p style='font-size: 50%;color: #13386b;'>$row[1]</p>
-                    <p style='font-size: 50%;'><p id='Lshow".($queryLength - $i)."'>$row[4]</p><button id='like".($queryLength - $i)."' onclick='like(this.id)' type='image'><img src='https://img.icons8.com/ios/10/000000/thumb-up.png'/></button>  <p id='DLshow".($queryLength - $i)."'>$row[5]</p><button id='dislike".($queryLength - $i)."' onclick='dlike(this.id)' type='image'><img src='https://img.icons8.com/ios/10/000000/thumbs-down.png'/></button></p>
+                    <p style='font-size: 50%;'><p id='Lshow".($queryLength - $i -1)."'>$row[4]</p><button id='like".($queryLength - $i -1)."' onclick='like(this.id)' type='image'><img src='https://img.icons8.com/ios/10/000000/thumb-up.png'/></button>  <p id='DLshow".($queryLength - $i -1)."'>$row[5]</p><button id='dislike".($queryLength - $i -1)."' onclick='dlike(this.id)' type='image'><img src='https://img.icons8.com/ios/10/000000/thumbs-down.png'/></button></p>
                 </div>
                 <br>
                 ";
