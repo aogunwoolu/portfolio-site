@@ -32,6 +32,8 @@ $result2 = mysqli_query($conn, "
          "
 );
 
+
+
 $queryLength = mysqli_num_rows($result2);
 
 $postArr = array();
@@ -48,7 +50,16 @@ if (mysqli_num_rows($result2)>0) {
                     <h2>$row[2]</h2>
                     <p>$row[3]</p>
                     <p style='font-size: 50%;color: #13386b;'>$row[1]</p>
-                    <p style='font-size: 50%;'><p id='Lshow".($queryLength - $i -1)."'>$row[4]</p><button id='like".($queryLength - $i -1)."' onclick='like(this.id)' type='image'><img src='https://img.icons8.com/ios/10/000000/thumb-up.png'/></button>  <p id='DLshow".($queryLength - $i -1)."'>$row[5]</p><button id='dislike".($queryLength - $i -1)."' onclick='dlike(this.id)' type='image'><img src='https://img.icons8.com/ios/10/000000/thumbs-down.png'/></button></p>
+                    <p style='font-size: 50%;'>
+                    <p id='Lshow".($queryLength - $i -1)."'>$row[4]</p>
+                    	<button name = 'likeButton' id='like".($queryLength - $i -1)."' onclick='like(this.id)' type='submit'>
+                    		<img src='https://img.icons8.com/ios/10/000000/thumb-up.png'/>
+                    	</button>
+                    <p id='DLshow".($queryLength - $i -1)."'>$row[5]</p>
+                    	<button name = 'dislikeButton' id='dislike".($queryLength - $i -1)."' onclick='dlike(this.id)' type='submit'>
+                    		<img src='https://img.icons8.com/ios/10/000000/thumbs-down.png'/>
+                    	</button>
+                    </p>
                 </div>
                 <br>
                 ";
@@ -63,18 +74,25 @@ $user = unserialize($_SESSION["user"]);
 $userName = $user->getUN();
 $addPostButton = "";
 
-function updatePost($Pos,$like,$val,$conn){
-    $post = postArr[$Pos];
-    $sql = "";
+$_SESSION["post"] = "";
+$_SESSION["num"] = "";
+$_SESSION["like"] = 0;
 
-    if ($like == true) {
-        $sql = "UPDATE post SET likes = $val where postID = ".$post->getID;
-    }
-    else{
-        $sql = "UPDATE post SET dislikes = $val where postID = ".$post->getID;
-    }
+if (isset($_SESSION['prevPost']) && isset($_SESSION['prevNum'])){
+	if (!($_SESSION['prevPost'] == $_SESSION["post"]) && !($_SESSION['prevNum'] == $_SESSION["num"])) {
+		if ($_SESSION["like"] == 0) {
+			$number = $_SESSION['num'];
+			$postID = $_SESSION['post'];
 
-    mysqli_query($conn,$sql);
+			$sql = "UPDATE post SET likes = $number where postID = $postID";
+		}
+		if ($_SESSION["like"] == 1) {
+			$number = $_SESSION['num'];
+			$postID = $_SESSION['post'];
+
+			$sql = "UPDATE post SET dislikes = $number where postID = $postID";
+		}
+	}
 }
 
 if ($user->getAdmin()==1){
@@ -165,9 +183,31 @@ echo "
             num++;
             likeNum.innerHTML = num++;
 
+			let passedArray =
+				<?php echo json_encode($postArr); ?>;
+
+			Session["prevPost"] = passedArray[selectedPost];
+			Session["prevNum"] = num;
+			Session["like"] = 1;
+
             sessionStorage.setItem('oneLike'+selectedPost,'true');
         }
+		else{
 
+			var likeNum = document.getElementById('Lshow'+selectedPost);
+			var num = likeNum.innerHTML;
+			num--;
+			likeNum.innerHTML = num--;
+
+			let passedArray =
+				<?php echo json_encode($postArr); ?>;
+
+			Session["prevPost"] = passedArray[selectedPost];
+			Session["prevNum"] = num;
+			Session["like"] = 0;
+
+			sessionStorage.setItem('oneLike'+selectedPost,'false');
+		}
     }
 
     function dlike(clicked_id) {
