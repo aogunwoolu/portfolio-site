@@ -199,9 +199,11 @@ echo "
 			num--;
 			likeNum.innerHTML = num--;
 
-			let passedArray =
-				<?php echo json_encode($postArr); ?>;
+			let passedArray = <?php echo json_encode($postArr); ?>;
 
+			alert(passedArray[0]);
+
+			'<%Session["UserName"] = "' + userName + '"; %>';
 			Session["prevPost"] = passedArray[selectedPost];
 			Session["prevNum"] = num;
 			Session["like"] = 0;
