@@ -2,18 +2,19 @@
 <?php session_start(); 
   include 'autoload.php';
 
-    $servername = getenv("MYSQL_SERVICE_HOST");
-    $dbport = getenv("MYSQL_SERVICE_PORT");
-    $username = getenv("DATABASE_USER");
-    $password = getenv("DATABASE_PASSWORD");
-    $db = getenv("DATABASE_NAME");
+  $servername = getenv("MYSQL_SERVICE_HOST");
+  $dbport = getenv("MYSQL_SERVICE_PORT");
+  $username = getenv("DATABASE_USER");
+  $password = getenv("DATABASE_PASSWORD");
+  $db = getenv("DATABASE_NAME");
 
-  /*
-   $servername = "localhost";
-   $username = "root";
-   $password = "password123";
-   $db = "login_details";
-  */
+/*
+ $servername = "localhost";
+ $username = "root";
+ $password = "password123";
+ $db = "login_details";
+*/
+
 
    $returner = array();
    // Create connection

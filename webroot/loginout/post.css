@@ -1,6 +1,6 @@
 @import url("loginoutParent.css");
 
-#login{
+#panel,#panel2{
   color: white;
   background-color: rgba(246, 246, 246, 0.3);
   border: solid 1px black;

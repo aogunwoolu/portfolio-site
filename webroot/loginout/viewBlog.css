@@ -5,7 +5,18 @@
     background-color: rgba(246, 246, 246, 0.3);
     padding: 10px;
 }
+.replyBack{
+    background-color: rgba(0, 102, 255, 0.2);
+    margin: 0px 30px;
+    padding: 10px;
+}
 .sidePanel{
     background-color: rgba(0, 246, 246, 0.3);
     border: dotted 1px black;
+}
+.deleteButton{
+    color: white;
+    background: red;
+    border: none;
+    float: right;
 }

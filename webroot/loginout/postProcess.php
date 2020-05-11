@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>login</title>
+      <link href='../reset.css' rel='stylesheet'>
     <link rel="stylesheet" href="login.css" type="text/css"/>
   </head>
   <body>
@@ -16,8 +17,14 @@ $username = getenv("DATABASE_USER");
 $password = getenv("DATABASE_PASSWORD");
 $db = getenv("DATABASE_NAME");
 
-$conn = new mysqli($servername, $username, $password,$db);
+/*
+$servername = "localhost";
+$username = "root";
+$password = "password123";
+$db = "login_details";
+*/
 
+$conn = new mysqli($servername, $username, $password,$db);
     function idGen($conn){
         $value = mysqli_real_escape_string($conn,uniqid());
         $result = mysqli_query($conn,"SELECT `postID` FROM `posts` WHERE `postID` = '" . $value ."'");
@@ -29,20 +36,13 @@ $conn = new mysqli($servername, $username, $password,$db);
         }
     }
 
-    /*
-   $servername = "localhost";
-   $username = "root";
-   $password = "password123";
-   $db = "login_details";
-    */
-
    $returner = array();
    // Create connection
 
    $postID = idGen($conn);
    $postDate = date("Y-m-d h:i:s");
-   $postTitle = mysqli_real_escape_string($conn,$_POST["titleToUpload"]);
-   $postContents = mysqli_real_escape_string($conn,$_POST["postToUpload"]);
+   $postTitle = mysqli_real_escape_string($conn,$_GET["titleToUpload"]);
+   $postContents = mysqli_real_escape_string($conn,$_GET["postToUpload"]);
    $likes = 0;
    $dislikes = 0;
 

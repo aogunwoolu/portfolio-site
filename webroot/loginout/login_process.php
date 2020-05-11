@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>login</title>
+      <link href='../reset.css' rel='stylesheet'>
     <link rel="stylesheet" href="login.css" type="text/css"/>
   </head>
   <body>
@@ -17,10 +18,13 @@
     $db = getenv("DATABASE_NAME");
     //$db = new mysqli($dbhost, $dbuser, $dbpwd, $dbname) or die("Cant Connect to database");
 
-   //$servername = "localhost";
-   //$username = "root";
-   //$password = "password123";
-   //$db = "login_details";
+/*
+   $servername = "localhost";
+   $username = "root";
+   $password = "password123";
+   $db = "login_details";
+*/
+
 
    $returner = array();
    // Create connection
@@ -44,6 +48,8 @@
 
      echo $currentUser->getUN()."\n";
      $_SESSION["user"] = serialize($currentUser);
+
+
      header("Location: viewBlog.php");
      exit;
     // return $returner;
