@@ -1,4 +1,4 @@
-<?php
+**<?php
 include 'autoload.php';
 session_start();
 
@@ -38,12 +38,12 @@ echo "
             //const URLString = window.location.search;
             //const URLParams = new URLSearchParams(URLString);
             //const postID = URLParams.get('postID');
-            
+
             var inputs = document.getElementsByClassName('validate');
- 
+
             window.location.href =  'postExample.php?title='+(inputs[0].value)+'&body='+(inputs[1].value);
         }
-    
+
         function goBack(){
             let conF = confirm('are you sure you want to discard message?');
 
