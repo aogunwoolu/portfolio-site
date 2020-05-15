@@ -10,7 +10,7 @@
 <form name="reply" id = "panel2" method="POST" onsubmit="return preventDefault();" action="http://cakephp-mysql-persistent-qboecs417.bde1.qmul-eecs.openshiftapps.com/loginout/replyProcess.php" method="post" >
     <div class="inputs">
         <legend class = "loginL title">uno reverse card!</legend>
-        <p class = "loginL subtitle">Message</p>
+        <label class = "loginL subtitle">Message</label>
         <textarea id= "txtArea" onkeypress="onTestChange();" name="postToUpload" style="resize: none" class="uploadmessage validate" rows="22" cols="50"></textarea>
         <br>
         <button class = "postText" type="submit">reply</button>
