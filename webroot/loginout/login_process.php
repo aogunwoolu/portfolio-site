@@ -50,7 +50,12 @@
      $_SESSION["user"] = serialize($currentUser);
 
 
-     header("Location: viewBlog.php");
+     if ($row['adminStatus'] == 1){
+		 header("Location: addPost.php");
+	 }
+     else {
+		 header("Location: viewBlog.php");
+	 }
      exit;
     // return $returner;
     }
