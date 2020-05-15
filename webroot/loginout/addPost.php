@@ -23,9 +23,9 @@ echo "
 <form name='preview' id = 'panel' onsubmit='return preventDefault();' action='http://cakephp-mysql-persistent-qboecs417.bde1.qmul-eecs.openshiftapps.com/loginout/postProcess.php' method='GET' >
     <div class='inputs'>
         <legend class = 'loginL title'>send out a message? beep boop</legend>
-        <p class = 'loginL subtitle'>Title</p>
+        <label class = 'loginL subtitle'>Title</label>
         <textarea  name='titleToUpload' style='resize: none' class='uploadmessage validate' rows='1' cols='50'>$title</textarea>
-        <p class = 'loginL subtitle'>Message</p>
+        <label class = 'loginL subtitle'>Message</label>
         <textarea name='postToUpload' style='white-space:pre-line;resize: none' class='uploadmessage validate' rows='22' cols='50'>$body</textarea>
         <br>
         <input type='button' class = 'goBack' onclick='goBack();' value='go back'/>
