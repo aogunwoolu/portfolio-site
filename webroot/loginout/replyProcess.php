@@ -12,18 +12,18 @@ session_start();
   </head>
   <body>
 <?php
-/*
 $servername = getenv("MYSQL_SERVICE_HOST");
 $dbport = getenv("MYSQL_SERVICE_PORT");
 $username = getenv("DATABASE_USER");
 $password = getenv("DATABASE_PASSWORD");
 $db = getenv("DATABASE_NAME");
-*/
 
+/*
 $servername = "localhost";
 $username = "root";
 $password = "password123";
 $db = "login_details";
+*/
 
 $conn = new mysqli($servername, $username, $password,$db);
 
@@ -32,7 +32,6 @@ $pos = (int)($_GET['postID']);
 $post = $_SESSION["postArr"][count($_SESSION["postArr"])-$pos-(1)];
 echo $post->getTitle();
 $postID = $post->getID();
-//echo "this is the pos: |".$pos."|\nthis is the post ID: |".$postID."|\nthis is the size of arr: |".count($_SESSION["postArr"])."|\n";
 
 function idString($length) {
     $char = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
