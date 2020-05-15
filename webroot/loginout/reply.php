@@ -11,7 +11,7 @@
     <div class="inputs">
         <legend class = "loginL title">uno reverse card!</legend>
         <label class = "loginL subtitle">Message</label>
-        <textarea id= "txtArea" onkeypress="onTestChange();" name="postToUpload" style="resize: none" class="uploadmessage validate" rows="22" cols="50"></textarea>
+        <textarea style = 'white-space:pre-line;' id= "txtArea" onkeypress="onTestChange();" name="postToUpload" style="resize: none" class="uploadmessage validate" rows="22" cols="50"></textarea>
         <br>
         <button class = "postText" type="submit">reply</button>
         <input type='button' class = "discard" onclick='goBack();' value='discard'/>

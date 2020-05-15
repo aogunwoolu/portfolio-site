@@ -16,7 +16,10 @@
   padding-bottom: 20px;
 }
 label {display:block;}
-textarea { display:block;}
+textarea{
+	display:block;
+
+}
 .inputs{
   text-align: center;
 }
