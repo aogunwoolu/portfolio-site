@@ -9,6 +9,7 @@ session_start();
 $title = "";
 $body = "";
 
+//check if there are URL variables for title and body
 if (isset($_GET['title']) && isset($_GET['body'])){
     $title = $_GET['title'];
     $body = $_GET['body'];
@@ -103,7 +104,7 @@ echo "
                     inputs[1].style.border = '0px solid grey';
                 }
             }
-            //if either of variables 
+            //if either of variables
             if (hasTitle == false){
                 alert('you have to have a title!');
             }
@@ -112,6 +113,7 @@ echo "
             }
             return (hasTitle && hasContent);
         }
+        //remove all unwanted characters
         function Trim(value) {
             return value.replace(/^\s+|\s+$/g, '');
         };

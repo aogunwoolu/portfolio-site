@@ -3,31 +3,41 @@
   <head>
     <meta charset="utf-8">
     <title>login</title>
-      <link href='../reset.css' rel='stylesheet'>
+	<!-----reset css call----->
+    <link href='../reset.css' rel='stylesheet'>
+	<!-----page css call----->
     <link rel="stylesheet" href="login.css" type="text/css"/>
   </head>
   <body>
 <?php
+	//start session to access variables
     session_start();
+	//include autoloader (to use any class)
     include 'autoload.php';
 
-$servername = getenv("MYSQL_SERVICE_HOST");
-$dbport = getenv("MYSQL_SERVICE_PORT");
-$username = getenv("DATABASE_USER");
-$password = getenv("DATABASE_PASSWORD");
-$db = getenv("DATABASE_NAME");
+    //database connection
+	$servername = getenv("MYSQL_SERVICE_HOST");
+	$dbport = getenv("MYSQL_SERVICE_PORT");
+	$username = getenv("DATABASE_USER");
+	$password = getenv("DATABASE_PASSWORD");
+	$db = getenv("DATABASE_NAME");
 
-/*
-$servername = "localhost";
-$username = "root";
-$password = "password123";
-$db = "login_details";
-*/
+	/*
+	$servername = "localhost";
+	$username = "root";
+	$password = "password123";
+	$db = "login_details";
+	*/
 
-$conn = new mysqli($servername, $username, $password,$db);
-    function idGen($conn){
-        $value = mysqli_real_escape_string($conn,uniqid());
-        $result = mysqli_query($conn,"SELECT `postID` FROM `posts` WHERE `postID` = '" . $value ."'");
+	//Create connection
+	$conn = new mysqli($servername, $username, $password,$db);
+
+	//function for generating unique IDs
+	function idGen($conn){
+		//generates unique ID under constraints of connection
+		$value = mysqli_real_escape_string($conn,uniqid());
+		//check if id exists already in database
+		$result = mysqli_query($conn,"SELECT `postID` FROM `posts` WHERE `postID` = '" . $value ."'");
         if (mysqli_num_rows($result) > 0) {
             return idGen($conn);
         }
@@ -36,41 +46,48 @@ $conn = new mysqli($servername, $username, $password,$db);
         }
     }
 
-   $returner = array();
-   // Create connection
+    //generate unique id using idGen function ^^^
+    $postID = idGen($conn);
+	//get current date/time
+	$postDate = date("Y-m-d h:i:s");
+	//get URL vars
+	$postTitle = mysqli_real_escape_string($conn,$_GET["titleToUpload"]);
+	$postContents = mysqli_real_escape_string($conn,$_GET["postToUpload"]);
+	//@todo
+	$likes = 0;
+	$dislikes = 0;
 
-   $postID = idGen($conn);
-   $postDate = date("Y-m-d h:i:s");
-   $postTitle = mysqli_real_escape_string($conn,$_GET["titleToUpload"]);
-   $postContents = mysqli_real_escape_string($conn,$_GET["postToUpload"]);
-   $likes = 0;
-   $dislikes = 0;
+	//create SQL statement to query the database
+	$statement = "INSERT INTO posts (postID,postDate,postTitle,post,likes,dislikes) VALUES ('$postID','$postDate','$postTitle','$postContents',$likes,$dislikes)";
+	//query with statement
+	if (mysqli_query($conn,$statement)){
+		echo "created successfully";
+	}
+	else{
+		echo "error".mysqli_error($conn);
+	}
 
-   echo $postID;
+	//unserialize user object in session
+	$user = unserialize($_SESSION["user"]);
+	//make local variable from username
+	$userName = $user->getUN();
 
-   // Now check to see if the values match in your database
-   // This assumes you have already written your connecting to database code
-   $statement = "INSERT INTO posts (postID,postDate,postTitle,post,likes,dislikes) VALUES ('$postID','$postDate','$postTitle','$postContents',$likes,$dislikes)";
-   if (mysqli_query($conn,$statement)){
-     echo "created successfully";
-   }else{
-     echo "error".mysqli_error($conn);
-   }
+	//create SQL statement to query the database
+   	$statement = "INSERT INTO userowns (userName,postID) VALUES ('$userName','$postID')";
+	//query with statement
+   	if (mysqli_query($conn,$statement)){
+   		echo "created successfully";
+   	}
+   	else{
+   		echo "error".mysqli_error($conn);
+   	}
 
-   $user = unserialize($_SESSION["user"]);
-   $userName = $user->getUN();
+	//close database connection
+   	$conn->close();
 
-   $statement = "INSERT INTO userowns (userName,postID) VALUES ('$userName','$postID')";
-   if (mysqli_query($conn,$statement)){
-       echo "created successfully";
-   }else{
-       echo "error".mysqli_error($conn);
-   }
-
-   $conn->close();
-
-   //header("Location: viewBlog.php");
-   exit;
+	//close database connection
+   	header("Location: viewBlog.php");
+   	exit;
 ?>
 </body>
 </html>

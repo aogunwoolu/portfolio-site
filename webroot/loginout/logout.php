@@ -1,9 +1,8 @@
 <?php
-    session_start();
-
-    if(isset($_SESSION["user"])) {
-        unset($_SESSION["user"]);
-    }
-
+	//reset the entire session
+	session_start();
+	session_unset();
+	session_destroy();
+	//direct user back to index.php
     header("Location: ../index.php");
 ?>
