@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-//start session
+<!---start session---->
 <?php session_start();?>
 <html lang="en">
 <head>
@@ -135,7 +135,7 @@ $endPrint = $endPrint.">blog</a>
                   </div>
                   <div class='col-sm-12'>
                     <h2>Personal Statement</h2>
-                    <p>Most users see a computer at the front and use the graphical user interfaces. The first time I used a computer, it intrigued me to know how these interfaces work, the theory behind computers and the methodology of how they work. I am a keen to further my Computer Science knowledge.
+                    <p style='font-size: medium'>Most users see a computer at the front and use the graphical user interfaces. The first time I used a computer, it intrigued me to know how these interfaces work, the theory behind computers and the methodology of how they work. I am a keen to further my Computer Science knowledge.
 
 Studying Computing, ICT and Maths at A-Level has increased my desire to want to know more about this subject.
 
@@ -186,16 +186,7 @@ My future aspirations are to leave the university to enter into the world of wor
                 </div>
               </div>
 
-              <div id = 'skills'>
-                <div id='followingList'>
-                  <h1 id='boxTitle'>Top 5 Movies</h1>
-                  <p>Parasite</p>
-                  <p>a silent voice</p>
-                  <p>joker</p>
-                  <p>grave of the fireflies</p>
-                  <p>kill bill</p>
-                </div>
-              </div>
+              <a class=\"twitter-timeline\" href=\"https://twitter.com/Abisade17?ref_src=twsrc%5Etfw\">Tweets by Abisade17</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>
             </div>
           </div>
         </div>
