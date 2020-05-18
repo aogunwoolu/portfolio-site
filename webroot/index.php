@@ -135,11 +135,43 @@ $endPrint = $endPrint.">blog</a>
                   </div>
                   <div class='col-sm-12'>
                     <h2>Personal Statement</h2>
-                    <p>I am a persistently motivated and creative individual with a passion and eagerness for the field of technology, this is evident in my chosen A level subjects. I am studying economics, computer science and maths, which form a fundamental foundation that is essential for my choice of course in University. I also have strong teamwork skills, as I have completed the Duke of Edinburgh bronze award and the national citizen service. These challenged me as at their core these events test an individual’s teamwork and perseverance and this skill has carried over to my coding ability as it means i am able to quickly pick up a programming language because of my perseverance in learning the essential paradigms or programming such as object oriented and procendural and functional, meaning i can apply this to any new language i need to learn and pick this up quickly
+                    <p>Most users see a computer at the front and use the graphical user interfaces. The first time I used a computer, it intrigued me to know how these interfaces work, the theory behind computers and the methodology of how they work. I am a keen to further my Computer Science knowledge.
 
+Studying Computing, ICT and Maths at A-Level has increased my desire to want to know more about this subject.
 
-                    My punctuality and attendance is very important to me as it shows an individual’s dedication to their work, this is proven by my 100% attendance for 5 years in secondary school from year 7 to 11 and onwards to sixth form and university. I have taken part in many different projects which have allowed me to broaden my range of skills and abilities in general and further improve my ability to adapt to different roles I may encounter which can be found in their respective programming language pages.
-                  </p>
+Furthermore I believe that my two week work experience placement, based in IT support at ARM Holdings, gave me a great insight into how an international Computing business works and confirmed that I wanted to go into computing.
+
+I am familiar with Python, which I have learnt to use for programming and have learnt about the theory behind Stored Program Concept, Fetch-Execute Cycle and also the Internet along with the legal aspects behind Computing.
+
+I have advanced my programing skills using PyQt to develop my own user interfaces and further programming techniques including Object and Event orientated programming.
+
+With this knowledge I feel that my problem solving has developed culminating in my project, which I am currently in the process of completing. I am enjoying the experience of the project, not only with the programming but the process of the project - from the analysis to the testing.
+
+I feel to study Computer Science you would need to be more scientific in your thinking as arguments need supporting evidence before they are proved.
+
+To be a successful student you need to be organised, able to communicate and capable of independent research as an individual to expand your knowledge.
+
+In using my computing A-Level skills, I have gained a significant level of knowledge of how computers work; the theory behind them and also why we need computer scientists in the world of work. It is important to be able to analyse problems and work out solutions, as well as to program the solutions and ensure that if there is a gap in the market you develop these ideas.
+
+Computer scientists' work ensures that current computing programs and processes are maintained and updated if appropriate.
+
+I am always searching for programs or websites to help me with my studies and programs, such as using GitHub as a version control system for my project.
+
+I am currently Chair of the Student Committee at Long Road Sixth Form College; I was elected by the committee to sit on the Board of Governors for the College to represent student views, values and opinions.
+
+I also oversee and plan the entertainments and charitable events, which has given me the opportunity to develop my teamwork and people skills.
+
+I am committed to the charity BeatBullying; which involves taking on the responsibility of Young and Media Ambassador. I also am a mentor for both BeatBullying and its sister charity MindFull helping young people suffering from bullying and mental health issues. This has helped me understand complex personal issues and to further enhance my communication skills.
+
+Since July 2013, I have worked part-time at both Cambridge University Hospitals as a Customer Service Administrator, which has strengthened me as an individual and I had the responsibility of helping others to ensure patient safety and confidentiality.
+
+At Linton Village College I was awarded the Enterprise Honour for being the Manager of the Technical Team and a Student Leader of the Library, which involved organising the day to day running of the Library.
+
+At the same time I was nominated for the Business Studies Linton Honour.
+
+The projects will enable me to draw on all my previous knowledge and experience to enhance at university and further it independently to create a substantial finished product for an external client. I am looking forward to the excitement and challenge that studying science will bring at a higher level.
+
+My future aspirations are to leave the university to enter into the world of work to pursue a career in Computer Science and ultimately, to start my own business in Computer Science.                  </p>
                   </div>
                 </div>
               </div>
