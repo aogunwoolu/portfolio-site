@@ -177,16 +177,20 @@ My future aspirations are to leave the university to enter into the world of wor
               </div>
             </div>
             <div class='col-md-3'>
-              <div id = 'skills'>
-                <div id='followingList'>
-                  <h1 id='boxTitle'>Hobbies</h1>
-                  <p>Programming</p>
-                  <p>Anime</p>
-                  <p>Manga</p>
-                </div>
-              </div>
+              	<div id = 'skills'>
+                	<div id='followingList'>
+                  		<h1 id='boxTitle'>Hobbies</h1>
+                  		<p>Programming</p>
+                  		<p>Anime</p>
+                  		<p>Manga</p>
+                	</div>
+             	</div>
 
-              <a class=\"twitter-timeline\" href=\"https://twitter.com/Abisade17?ref_src=twsrc%5Etfw\">Tweets by Abisade17</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>
+				<div id = \"skills\">
+            		<div id=\"followingList\">
+              			<a class=\"twitter-timeline\" href=\"https://twitter.com/Abisade17?ref_src=twsrc%5Etfw\">Tweets by Abisade17</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>
+            		</div>
+            	</div>
             </div>
           </div>
         </div>
