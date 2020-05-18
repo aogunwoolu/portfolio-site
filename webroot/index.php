@@ -174,21 +174,13 @@ The projects will enable me to draw on all my previous knowledge and experience 
 My future aspirations are to leave the university to enter into the world of work to pursue a career in Computer Science and ultimately, to start my own business in Computer Science.                  </p>
                   </div>
                   <hr>
-                  <h1>SQL certification</h1>
-                  <div class='progress'>
-  					 <div class='progress-bar bg-success' role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'></div>
-				  </div>
-				  <h1>C# certification</h1>
-				  <div class='progress'>
-  					 <div class='progress-bar bg-info' role='progressbar' style='width: 50%' aria-valuenow='50' aria-valuemin='0' aria-valuemax='100'></div>
-				  </div>
-				  <h1>Java certification</h1>
-				  <div class='progress'>
-  					 <div class='progress-bar bg-warning' role='progressbar' style='width: 80%' aria-valuenow='80' aria-valuemin='0' aria-valuemax='100'></div>
-				  </div>
-				  <h1>Java certification</h1>
-				  <div class='progress'>
-  					 <div class='progress-bar bg-danger' role='progressbar' style='width: 100%' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100'></div>
+                  <div>
+                  	<div class='progress'>
+  						<div class='progress-bar bg-success' role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'>SQL cerification</div>
+				  	</div>
+				  	<div class='progress'>
+  						<div class='progress-bar bg-info' role='progressbar' style='width: 100%' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100'>python certification</div>
+				   	</div>
 				  </div>
                 </div>
               </div>
@@ -203,9 +195,9 @@ My future aspirations are to leave the university to enter into the world of wor
                 	</div>
              	</div>
 
-				<div id = 'skills'>
-            		<div id='followingList'>
-              			<a class='twitter-timeline' href='https://twitter.com/Abisade17?ref_src=twsrc%5Etfw'>Tweets by Abisade17</a> <script async src='https://platform.twitter.com/widgets.js' charset='utf-8'></script>
+				<div id = \"skills\">
+            		<div id=\"followingList\">
+              			<a class=\"twitter-timeline\" href=\"https://twitter.com/Abisade17?ref_src=twsrc%5Etfw\">Tweets by Abisade17</a> <script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>
             		</div>
             	</div>
             </div>
