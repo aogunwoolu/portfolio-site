@@ -215,7 +215,7 @@ if ($queryLength>0) {
                     //if post is not deleted, add HTML to be displayed
                     if ($row3[4] == 0) {
                         $replies .= "
-                        <h2 style='color: crimson;'>$row3[1]</h2>
+                        <h2 style='font-size: 120%; color: crimson;'>$row3[1]</h2>
                         <p style='color: gray;'>$row3[3]</p>
                         <p style='font-size: 60%;color: #13386b;'>$row3[2]</p>
                         <p style='font-size: 50%;'>
@@ -245,7 +245,7 @@ if ($queryLength>0) {
             //add HTML to be displayed
             $postToPrint .= "
             <div id = 'message" . ($queryLength - $i - (1+$noDeleted)) . "' class = 'glassBack'>
-                <h2>$row[2]</h2>
+                <h2 style='font-size: 60%;'>$row[2]</h2>
                 <p>$row[3]</p>
                 <p style='font-size: 60%;color: #13386b;'>".date('dS F Y', strtotime($row[1])).', '.date('g:ia', strtotime($row[1])).' '.date('T')."</p>
                 <button name = 'likeButton' id='like" . ($queryLength - $i - (1+$noDeleted)) . "' onclick='reply(this.id)' type='submit'>reply</button>
