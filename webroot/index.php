@@ -175,10 +175,12 @@ My future aspirations are to leave the university to enter into the world of wor
                   </div>
                   <hr>
                   <div id = 'bars'>
-                  	<h2>Progression</h2>
+                  	<h1>Progression</h1>
+                  	<br/>
                   	<div class='progress'>
   						<div class='progress-bar bg-success' role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'>SQL cerification</div>
 				  	</div>
+				  	<br/>
 				  	<div class='progress'>
   						<div class='progress-bar bg-info' role='progressbar' style='width: 100%' aria-valuenow='100' aria-valuemin='0' aria-valuemax='100'>python certification</div>
 				   	</div>
