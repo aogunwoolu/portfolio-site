@@ -174,7 +174,7 @@ The projects will enable me to draw on all my previous knowledge and experience 
 My future aspirations are to leave the university to enter into the world of work to pursue a career in Computer Science and ultimately, to start my own business in Computer Science.                  </p>
                   </div>
                   <hr>
-                  <div>
+                  <div id = 'bars'>
                   	<div class='progress'>
   						<div class='progress-bar bg-success' role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'>SQL cerification</div>
 				  	</div>
