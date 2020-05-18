@@ -134,7 +134,7 @@ $endPrint = $endPrint.">blog</a>
                     </div>
                   </div>
                   <div class='col-sm-12'>
-                    <h2>Personal Statement</h2>
+                    <h1>Personal Statement</h1>
                     <p style='font-size: medium'>Most users see a computer at the front and use the graphical user interfaces. The first time I used a computer, it intrigued me to know how these interfaces work, the theory behind computers and the methodology of how they work. I am a keen to further my Computer Science knowledge.
 
 Studying Computing, ICT and Maths at A-Level has increased my desire to want to know more about this subject.
@@ -175,6 +175,7 @@ My future aspirations are to leave the university to enter into the world of wor
                   </div>
                   <hr>
                   <div id = 'bars'>
+                  	<h2>Progression</h2>
                   	<div class='progress'>
   						<div class='progress-bar bg-success' role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100'>SQL cerification</div>
 				  	</div>
