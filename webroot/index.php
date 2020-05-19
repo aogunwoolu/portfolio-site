@@ -62,16 +62,10 @@ $endPrint = $endPrint.">blog</a>
 
               <ul id = 'links' class='nav nav-pills flex-column'>
                 <li>
-                  <a href = ''>CV</a>
+                  <a href = 'https://github.com/N3bula404'>github</a>
                 </li>
                 <li>
-                  <a href = '#skills'>Skill</a>
-                </li>
-                <li>
-                  <a href = '#hobbies'>Hobbies</a>
-                </li>
-                <li>
-                  <a href = ''>Links</a><br>
+                  <a href = 'https://www.linkedin.com/in/abisade-ogunwoolu-0bb804155/'>linkedIn</a>
                 </li>
               </ul>
 
