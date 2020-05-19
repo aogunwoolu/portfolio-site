@@ -28,9 +28,6 @@ $endPrint = "
         <div class='collapse navbar-collapse' id='navbarNav'>
           <ul class='navbar-nav'>
             <li class='nav-item nav-link'>
-              <a id= 'lk' href = ''>Experience</a>
-            </li>
-            <li class='nav-item nav-link'>
               <a id= 'lk' href = ";
 if (!isset($_SESSION["user"])){
 	$endPrint = $endPrint."http://cakephp-mysql-persistent-qboecs417.bde1.qmul-eecs.openshiftapps.com/loginout/login.php";
@@ -47,7 +44,6 @@ $endPrint = $endPrint.">blog</a>
                 <div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
                   <a class='dropdown-item' href='pythonPage.html'>python</a>
                   <a class='dropdown-item' href='javaPage.html'>java</a>
-                  <a class='dropdown-item' href='#'>web development</a>
                 </div>
               </li>
             </ul>

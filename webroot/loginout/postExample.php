@@ -51,7 +51,7 @@ echo"
 <!-----navigation bar----->
 <nav class='navbar navbar-expand-sm bg-dark navbar-dark'>
 	<!-----add title link----->
-    <a class='navbar-brand' id= 'title' href = '../portfolioSite.php'>Abisade Ogunwoolu</a>
+    <a class='navbar-brand' id= 'title' href = '../index.php'>Abisade Ogunwoolu</a>
     <!-----create dropdown on smaller screens----->
     <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
         <span class='navbar-toggler-icon'></span>

@@ -245,7 +245,7 @@ if ($queryLength>0) {
             //add HTML to be displayed
             $postToPrint .= "
             <div id = 'message" . ($queryLength - $i - (1+$noDeleted)) . "' class = 'glassBack'>
-                <h2 style='font-size: 60%;'>$row[2]</h2>
+                <h2 style='font-size: 100%;'>$row[2]</h2>
                 <p>$row[3]</p>
                 <p style='font-size: 60%;color: #13386b;'>".date('dS F Y', strtotime($row[1])).', '.date('g:ia', strtotime($row[1])).' '.date('T')."</p>
                 <button name = 'likeButton' id='like" . ($queryLength - $i - (1+$noDeleted)) . "' onclick='reply(this.id)' type='submit'>reply</button>
