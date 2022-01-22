@@ -1,138 +1,105 @@
+<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
+<p align="center">
+  <a href="https://www.gatsbyjs.com">
+    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  </a>
+</p>
+<h1 align="center">
+  Gatsby's hello-world starter
+</h1>
 
+Kick off your project with this hello-world boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
 
-<!-- toc -->
+_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
 
-- [CakePHP Sample App on OpenShift](#cakephp-sample-app-on-openshift)
-  * [OpenShift Considerations](#openshift-considerations)
-    + [Security](#security)
-    + [Installation:](#installation)
-    + [Debugging Unexpected Failures](#debugging-unexpected-failures)
-    + [Installation: With MySQL](#installation-with-mysql)
-    + [Adding Webhooks and Making Code Changes](#adding-webhooks-and-making-code-changes)
-    + [Enabling the Database example](#enabling-the-database-example)
-    + [Hot Deploy](#hot-deploy)
-    + [Source repository layout](#source-repository-layout)
-    + [Compatibility](#compatibility)
-    + [License](#license)
+## 🚀 Quick start
 
-<!-- tocstop -->
+1.  **Create a Gatsby site.**
 
-CakePHP Sample App on OpenShift
-===============================
+    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)) to create a new site, specifying the hello-world starter.
 
-This is a quickstart CakePHP application for OpenShift v3 that you can use as a starting point to develop your own application and deploy it on an [OpenShift](https://github.com/openshift/origin) cluster.
+    ```shell
+    # create a new Gatsby site using the hello-world starter
+    gatsby new my-hello-world-starter https://github.com/gatsbyjs/gatsby-starter-hello-world
+    ```
 
-If you'd like to install it, follow [these directions](https://github.com/sclorg/cakephp-ex/blob/master/README.md#installation).  
+1.  **Start developing.**
 
-The steps in this document assume that you have access to an OpenShift deployment that you can deploy applications on.
+    Navigate into your new site’s directory and start it up.
 
-OpenShift Considerations
-------------------------
-These are some special considerations you may need to keep in mind when running your application on OpenShift.
+    ```shell
+    cd my-hello-world-starter/
+    gatsby develop
+    ```
 
-### Security
-Since the quickstarts are shared code, we had to take special consideration to ensure that security related configuration variable values are unique across applications. To accomplish this, we modified some of the configuration files. Namely we changed Security.salt and Security.cipherSeed values in the app/Config/core.php config file. Those values are now generated from the application template as CAKEPHP_SECURITY_SALT and CAKEPHP_SECURITY_CIPHER_SEED. Also the secret token is generated in the template as CAKEPHP_SECRET_TOKEN. From these values the session hashes are generated. Now instead of using the same default values, OpenShift can generate these values using the generate from logic defined within the instant application's template.
+1.  **Open the source code and start editing!**
 
-### Installation:
-These steps assume your OpenShift deployment has the default set of ImageStreams defined.  Instructions for installing the default ImageStreams are available [here](https://docs.okd.io/latest/install_config/imagestreams_templates.html#creating-image-streams-for-openshift-images).  If you are defining the set of ImageStreams now, remember to pass in the proper cluster-admin credentials and to create the ImageStreams in the 'openshift' namespace.
+    Your site is now running at `http://localhost:8000`!
 
-1. Fork a copy of [cakephp-ex](https://github.com/sclorg/cakephp-ex)
-2. Clone your repository to your development machine and cd to the repository directory
-3. Add a PHP application from the provided template and specify the source url to be your forked repo  
+    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries)._
 
-		$ oc new-app openshift/templates/cakephp.json -p SOURCE_REPOSITORY_URL=<your repository location>
+    Open the `my-hello-world-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
 
-4. Depending on the state of your system, and whether additional items need to be downloaded, it may take around a minute for your build to be started automatically.  If you do not want to wait, run
+## 🚀 Quick start (Gatsby Cloud)
 
-		$ oc start-build cakephp-example
+Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
 
-5. Once the build is running, watch your build progress  
+[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-hello-world)
 
-		$ oc logs build/cakephp-example-1
+## 🧐 What's inside?
 
-6. Wait for cakephp-example pods to start up (this can take a few minutes):  
+A quick look at the top-level files and directories you'll see in a Gatsby project.
 
-		$ oc get pods -w
+    .
+    ├── node_modules
+    ├── src
+    ├── .gitignore
+    ├── .prettierrc
+    ├── gatsby-browser.js
+    ├── gatsby-config.js
+    ├── gatsby-node.js
+    ├── gatsby-ssr.js
+    ├── LICENSE
+    ├── package-lock.json
+    ├── package.json
+    └── README.md
 
+1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
 
-	Sample output:  
+2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
 
-	       NAME                      READY     REASON         RESTARTS   AGE
-	       cakephp-example-1-build   0/1       ExitCode:0     0          8m
-	       cakephp-example-1-pytud   1/1       Running        0          2m
+3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
 
+4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
 
-7. Check the IP and port the cakephp-example service is running on:  
+5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
 
-		$ oc get svc
+6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
 
-	Sample output:  
+7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
 
-	       NAME              LABELS                     SELECTOR               IP(S)           PORT(S)
-	       cakephp-example   template=cakephp-example   name=cakephp-example   172.30.97.123   8080/TCP
+8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
 
-In this case, the IP for cakephp-example is 172.30.97.123 and it is on port 8080.  
-*Note*: you can also get this information from the web console.
+9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
 
-### Debugging Unexpected Failures
+10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
 
-Review some of the common tips and suggestions [here](https://github.com/openshift/origin/blob/master/docs/debugging-openshift.md).
+11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 
-### Installation: With MySQL
-1. Follow the steps for the Manual Installation above for all but step 3, instead use step 2 below.  
-  - Note: The output in steps 5-6 may also display information about your database.
-2. Add a PHP application from the cakephp-mysql template and specify the source url to be your forked repo  
+12. **`README.md`**: A text file containing useful reference information about your project.
 
-		$ oc new-app openshift/templates/cakephp-mysql.json -p SOURCE_REPOSITORY_URL=<your repository location>
+## 🎓 Learning Gatsby
 
+Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
 
-### Adding Webhooks and Making Code Changes
-Since OpenShift V3 does not provide a git repository out of the box, you can configure your github repository to make a webhook call whenever you push your code.
+- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
 
-1. From the Web Console homepage, navigate to your project
-2. Click on Browse > Builds
-3. Click the link with your BuildConfig name
-4. Click the Configuration tab
-5. Click the "Copy to clipboard" icon to the right of the "GitHub webhook URL" field
-6. Navigate to your repository on GitHub and click on repository settings > webhooks > Add webhook
-7. Paste your webhook URL provided by OpenShift
-8. Leave the defaults for the remaining fields - That's it!
-9. After you save your webhook, if you refresh your settings page you can see the status of the ping that Github sent to OpenShift to verify it can reach the server.  
+- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
 
-### Enabling the Database example
-In order to access the example CakePHP home page, which contains application stats including database connectivity, you have to go into the app/View/Layouts/ directory, remove the default.ctp and after that rename default.ctp.default into default.ctp`.
+## 💫 Deploy
 
-It will also be necessary to update your application to talk to your database back-end. The app/Config/database.php file used by CakePHP was set up in such a way that it will accept environment variables for your connection information that you pass to it. Once an administrator has created a MySQL database service for you to connect with you can add the following environment variables to your deploymentConfig to ensure all your cakephp-example pods have access to these environment variables. Note: the cakephp-mysql.json template creates the DB service and environment variables for you.
+[Build, Deploy, and Host On The Only Cloud Built For Gatsby](https://www.gatsbyjs.com/products/cloud/)
 
-You will then need to rebuild the application.  This is done via either a `oc start-build` command, or through the web console, or a webhook trigger in github initiating a build after the code changes are pushed.
+Gatsby Cloud is an end-to-end cloud platform specifically built for the Gatsby framework that combines a modern developer experience with an optimized, global edge network.
 
-### Hot Deploy
-
-In order to immediately pick up changes made in your application source code, you need to run your built image with the `OPCACHE_REVALIDATE_FREQ=0` parameter to the [oc new-app](https://docs.okd.io/latest/cli_reference/basic_cli_operations.html#basic-cli-operations) command, while performing the [installation steps](https://github.com/sclorg/cakephp-ex#installation) described in this README.
-
-	$ oc new-app openshift/templates/cakephp-mysql.json -p OPCACHE_REVALIDATE_FREQ=0
-
-Hot deploy works out of the box in the php image used with this example.
-
-To change your source code in the running container you need to [oc rsh](https://docs.okd.io/latest/cli_reference/basic_cli_operations.html#troubleshooting-and-debugging-cli-operations) into it.
-
-	$ oc rsh <POD_ID>
-
-After you [oc rsh](https://docs.okd.io/latest/cli_reference/basic_cli_operations.html#troubleshooting-and-debugging-cli-operations) into the running container, your current directory is set to `/opt/app-root/src`, where the source code is located.
-
-### Source repository layout
-
-You do not need to change anything in your existing PHP project's repository.
-However, if these files exist they will affect the behavior of the build process:
-
-* **composer.json**
-
-  List of dependencies to be installed with `composer`. The format is documented
-  [here](https://getcomposer.org/doc/04-schema.md).
-
-### Compatibility
-
-This repository is compatible with PHP 5.6 and higher, excluding any alpha or beta versions.
-
-### License
-This code is dedicated to the public domain to the maximum extent permitted by applicable law, pursuant to [CC0](http://creativecommons.org/publicdomain/zero/1.0/).
+<!-- AUTO-GENERATED-CONTENT:END -->

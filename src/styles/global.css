@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: "Spartan";
+  color: white;
+  cursor: url("../../static/cursor.png"), auto;	
+}
+
+html, body {
+  min-height: 100%;
+}
+body {
+  background-color: #0c0c0c;
+  background-repeat: no-repeat;
+}
+p {
+  margin: 16px auto;
+  line-height: 1.5em;
+}
+
+a{
+  font-family: "Spartan";
+  color: white;
+  text-decoration: none;
+}
+
+a:hover{
+  color: white;
+  cursor: pointer;
+}
+
+/* layout & nav */
+.layout {
+  max-width: 1900px;
+  margin: 0 auto;
+  /* margin-right: 60px;
+  margin-left: 60px; */
+}
+nav {
+  position: absolute;
+  z-index: 5;
+  background-color: #0c0c0c00;
+  width: 100%;
+  margin-top: 10px;
+}
+nav .links {
+  display: inline-block;
+  text-align: right;
+  float: right;
+  padding-right: 100px;
+}
+nav a {
+  display: inline-block;
+  margin-left: 20px;
+  font-weight: 400;
+  padding-bottom: 8px;
+  border-bottom: 3px solid transparent;
+}
+nav a:hover {
+  color: #b9b9b9;
+  border-color: white;
+}
+footer p{
+  text-align: center;
+  color: #bbb;
+  margin: 40px auto;
+}
+
+.container, .about_container{
+  padding-left: 0;
+  margin-left: -1px;
+}
+
+.navbar-inner {
+  background:transparent;
+}
+
+h1 > p > span.name{
+  color: #b556ff;
+}
+
+h1 > p {
+  color: #8f00ff;
+}
+
+h3 > strong.skill-array {
+  color: #5e5e5e;
+}
+
+.btn-flat {
+  display: table;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  /*border-color: #8f00ff;*/
+  background: 
+     linear-gradient(rgb(0, 0, 0),rgb(0, 0, 0)) padding-box, /*this is your grey background*/
+     linear-gradient(45deg, #bd12fa, #8901ff, #5101fe) border-box;
+  color: #313149;
+  padding:2px;
+  border: 1px solid transparent;
+  border-radius:50px;
+  display:inline-block;
+  /*border-image: linear-gradient(45deg, #bd12fa, #8901ff, #5101fe) 1;*/
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  display: block;
+  margin: 0 9px 0 9px;
+  color: #ffffff;
+  font-weight:500;
+  font-size: 20px;
+}
+
+.btn-flat:hover{
+  color: #a0a0a0;
+  background-position: right;
+}
+
+.mynav{
+  z-index: 10;
+}
