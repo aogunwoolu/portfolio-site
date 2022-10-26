@@ -11,6 +11,9 @@ module.exports = {
         teal: colors.teal,
         rose: colors.rose,
       },
+      backgroundImage: {
+        'main-bg': "url('./static/mainbg.png');",
+      }
     },
   },
   plugins: [],
