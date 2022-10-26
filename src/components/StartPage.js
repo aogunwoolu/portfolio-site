@@ -48,17 +48,6 @@ export default function StartPage() {
                 </Col>
                 <Col className='col-4'/>
             </Row>
-            <Container>
-                <Row className={styles.scroll}>
-                    <Col className='col-1'>
-                        <BsChevronDown size={28}/>
-                    </Col>
-                    <Col className='col-1'/>
-                    <Col>
-                        <p className='align-middle'>scroll for more</p>
-                    </Col>
-                </Row>
-            </Container>
         </Container>
     </div>
   );
