@@ -3,13 +3,7 @@ import * as THREE from 'three'
 import { useRef, useState, useMemo, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Text, TrackballControls } from '@react-three/drei'
-
-const words = [
-    "ReactJS",
-    "Django",
-    "Git",
-    "Docker"
-]
+// import randomWord from 'random-words'
 
 function Word({ children, ...props }) {
   const color = new THREE.Color()
@@ -30,8 +24,10 @@ function Word({ children, ...props }) {
     // Animate font color
     ref.current.material.color.lerp(color.set(hovered ? '#fa2720' : 'white'), 0.1)
   })
-  return <Text ref={ref} onPointerOver={over} onPointerOut={out} {...props} {...fontProps} children={children} />
+  return <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={() => console.log('clicked')} {...props} {...fontProps} children={children} />
 }
+
+const wordarr = ['army', 'beautiful', 'became', 'if', 'actually']
 
 function Cloud({ count = 4, radius = 20 }) {
   // Create a count x count random words with spherical distribution
@@ -41,8 +37,7 @@ function Cloud({ count = 4, radius = 20 }) {
     const phiSpan = Math.PI / (count + 1)
     const thetaSpan = (Math.PI * 2) / count
     for (let i = 1; i < count + 1; i++)
-      // Taken from https://discourse.threejs.org/t/can-i-place-obects-on-a-sphere-surface-evenly/4773/6
-      for (let j = 0; j < count; j++) temp.push([new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)), words])
+      for (let j = 0; j < count; j++) temp.push([new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)), wordarr[i-1]])
     return temp
   }, [count, radius])
   return words.map(([pos, word], index) => <Word key={index} position={pos} children={word} />)
@@ -52,7 +47,7 @@ export default function AboutBall() {
   return (
     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 35], fov: 90 }}>
       <fog attach="fog" args={['#202025', 0, 80]} />
-      <Cloud count={4} radius={20} />
+      <Cloud count={8} radius={20} />
       <TrackballControls />
     </Canvas>
   )

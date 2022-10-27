@@ -3,6 +3,7 @@ import Layout from "../components/Layout"
 import StartPage from "../components/StartPage"
 import Projects from '../components/Projects';
 import AboutBall from '../components/AboutBall';
+import Abi_Radar from '../components/Radar';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "../styles/global.css"
 
@@ -21,7 +22,8 @@ export default function Home() {
         <br/>
         <Projects/>
         <br/>
-        <AboutBall/>
+        <Abi_Radar/>
+        {/* <AboutBall/> */}
       </Layout>
     </div>
   )
