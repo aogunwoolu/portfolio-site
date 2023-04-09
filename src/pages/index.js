@@ -13,10 +13,7 @@ import { BsChevronDown } from 'react-icons/bs'
 
 export default function Home() {
   return (
-    <div style={{
-      // backgroundColor: '#0c0c0c',
-      // color: 'white'
-    }}>
+    <div style={{ display: 'flex', flexDirection: 'column' }} className="overflow-hidden">
       <Layout>
         <StartPage/>
         <br/>

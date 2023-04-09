@@ -22,35 +22,39 @@ function Abi_Radar() {
 
     const [color, setColor] = useState('#fff')
 
-    var options = options = {
+    var options = {
         maintainAspectRatio:false,
         colors : ['#ffcc48'],
-        // legend: {
-        //     display: false
-        // },
-        scale: {
-            ticks: {
-                // display: false,
-                maxTicksLimit: 3
-            },
-            r: {
-                grid: {
-                    color: '#fff'
-                }
-            }
+        legend: {
+            display: false
         },
-        // gridLines: {
-        //     display: false
-        // }
+        scales: {
+            r: {
+                ticks: {
+                    stepSize: 20,
+                    textStrokeColor: 'rgb(54, 162, 235)',
+                    color: 'rgba(240, 240, 240, 0.5)',
+                    backdropColor: 'rgb(47, 56, 62)'
+                },
+                angleLines: {
+                    color: '#0c0c0c',
+                },
+
+                grid: {
+                    color: "#fff",
+                },
+
+            },
+        }
     }
     var data = {
-        labels: ['Thing 1', 'Thing 2', 'Thing 3', 'Thing 4', 'Thing 5', 'Thing 6'],
+        labels: ['Frontend Development', 'Backend Development', 'Full-Stack Development', 'Desktop Development', 'Web Development', 'Database Development', 'Mobile Development', 'DevOps Engineering'],
         datasets: [
         {
-            label: '# of Votes',
-            data: [2, 9, 3, 5, 2, 3],
+            label: 'Skills',
+            data: [7, 9, 8, 5, 9, 10, 5, 7],
             borderColor: color,
-            borderWidth: 1,
+            borderWidth: 3,
         },
         ],
     };
@@ -67,12 +71,14 @@ function Abi_Radar() {
     }, []);
 
     return (
-        <div style={{height:'500px',width:'500px'}}>
+        <div style={{maxWidth: '100%'}}>
             <Radar 
                 id="chart"
                 className='chartjs-render-monitor'
                 data={data}
                 options={options}
+                width={400}
+                height={400}
             />
         </div>
     )

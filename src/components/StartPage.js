@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import * as styles from '../styles/start.module.css';
 import { FaGithub } from 'react-icons/fa';
 import { AiFillTwitterCircle, AiFillLinkedin } from 'react-icons/ai'
 import { BsChevronDown } from 'react-icons/bs'
 import Navbar from './Navbar'
+import ContactFormModal from './ContactForm';
 
 export default function StartPage() {
+const [isOpen, setIsOpen] = useState(false);
+
   return (
+    <div>
     <div className={styles.nebula_img}>
         <Container className={styles.about_container}>
             <Row>
@@ -17,7 +21,7 @@ export default function StartPage() {
                             <strong>Hey, I'm</strong>
                         </h3>
                         <h1>
-                            <p><span className="name">(Abi)</span>sade,</p>
+                            <p><span className="name">Abi</span>(sade),</p>
                         </h1>
                         <h3>
                             <strong>Full-Stack Developer.</strong><br/>
@@ -29,7 +33,7 @@ export default function StartPage() {
                             </strong>
                         </h3>
                         <br/>
-                        <Button variant="flat">Contact Me</Button>
+                        <Button onClick={()=>{setIsOpen(true)}} variant="flat">Contact Me</Button>
                         <br/>
                         <Container>
                             <Row className={styles.social_bar}>
@@ -61,6 +65,8 @@ export default function StartPage() {
         {/* <Container className='bottom-0'>
             
         </Container> */}
+    </div>
+    <ContactFormModal isOpen={isOpen} setIsOpen={setIsOpen}/>
     </div>
   );
 }
