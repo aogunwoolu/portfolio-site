@@ -25,7 +25,7 @@ const [isOpen, setIsOpen] = useState(false);
                         </h1>
                         <h3>
                             <strong>Full-Stack Developer.</strong><br/>
-                            <strong>I also do crypto & blockchain things.</strong>
+                            <strong>I also do DevOps & AI things.</strong>
                         </h3>
                         <h3>
                             <strong className="skill-array">
