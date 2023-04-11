@@ -110,10 +110,21 @@ h3 > strong.skill-array {
   color: #ffffff;
   font-weight:500;
   font-size: 20px;
+  transition: background-position 0.2s ease-in-out; /* add transition for smooth hover effect */
+  background-size: 200% 100%; /* add background size */
+  background-position: right center; /* set initial position to the right */
 }
 
-.btn-flat:hover{
+.btn-flat:hover {
+  background-position: left center; /* shift background to the left on hover */
   color: #a0a0a0;
-  background-position: right;
+}
+
+.icon {
+  transition: transform 0.2s ease-in-out; /* add transition for smooth hover effect */
+}
+
+.icon:hover {
+  transform: scale(1.1); /* increase the size of the icon by 10% on hover */
 }
 
