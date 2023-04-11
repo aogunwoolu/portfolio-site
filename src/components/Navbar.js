@@ -32,7 +32,7 @@ export default function Navbar() {
         <Link to="#projects">Projects</Link>
         <Link to="/">Resume</Link>
       </div>
-      <div className='md:hidden mx-8 block flex justify-end burger' onClick={toggleMenu}>
+      <div className='md:hidden mx-8 mt-4 block flex justify-end burger' onClick={toggleMenu}>
         {open ? <FaTimes /> : <FaBars />}
       </div>
       {open && (
