@@ -75,9 +75,9 @@
 }
 
 @media (max-width: 768px) {
-    /* .content {
-      max-width: 60rem;
-    } */
+    .content {
+      /* max-width: 60rem; */
+    }
   
     .social_bar {
       margin-top: 1rem;
@@ -90,7 +90,6 @@
   
   @media (max-width: 576px) {
     .content {
-      max-width: 15rem;
       font-size: small;
     }
 
