@@ -17,7 +17,7 @@ function AboutInfo({id}) {
             </p>
 
             <h1 className='text-xl font-bold max-sm:text-center'>Skills</h1>
-            <p className='font-light'>I have experience with the following technologies:</p>
+            <p className='font-light max-sm:text-center'>I have experience with the following technologies:</p>
             <div className="grid grid-cols-3 max-sm:grid-cols-1 max-sm:justify-items-center text-center">
                 <div>
                     <h4 className='font-bold'>Frontend</h4>
@@ -35,7 +35,6 @@ function AboutInfo({id}) {
                         <li>Django</li>
                         <li>Golang</li>
                         <li>SQL</li>
-                        <li>Git</li>
                         <li>Redis</li>
                     </ul>
                 </div>
