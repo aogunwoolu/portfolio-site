@@ -22,12 +22,8 @@ function Abi_Radar({id}) {
 
     const [color, setColor] = useState('#fff')
 
-    var options = {
-        maintainAspectRatio:false,
-        colors : ['#ffcc48'],
-        legend: {
-            display: false
-        },
+    const options = {
+        maintainAspectRatio: false,
         scales: {
             r: {
                 ticks: {
@@ -39,15 +35,21 @@ function Abi_Radar({id}) {
                 angleLines: {
                     color: '#0c0c0c',
                 },
-
                 grid: {
                     color: "#fff",
                 },
-
             },
-        }
-    }
-    var data = {
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                enabled: false
+            }
+        },
+    };
+    const data = {
         labels: ['Frontend Development', 'Backend Development', 'Full-Stack Development', 'Desktop Development', 'Web Development', 'Database Development', 'Mobile Development', 'DevOps Engineering'],
         datasets: [
         {
@@ -71,14 +73,14 @@ function Abi_Radar({id}) {
     }, []);
 
     return (
-        <div className='m-8' id={id} style={{maxWidth: '100%'}}>
+        <div className='m-2' id={id} style={{maxWidth: '100%'}}>
             <Radar 
                 id="chart"
                 className='chartjs-render-monitor'
                 data={data}
                 options={options}
-                width={400}
-                height={400}
+                width={500}
+                height={500}
             />
         </div>
     )
