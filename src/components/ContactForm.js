@@ -15,7 +15,7 @@ const ContactFormModal = ({isOpen, setIsOpen}) => {
     setSubject('');
     setMessage('');
 
-    const mailtoHref = "mailto:a.gounwoolu@outlook.com?subject=Inquiry&body=Description";
+    const mailtoHref = "mailto:a.gunwoolu@outlook.com?subject=Inquiry&body=Description";
     // Close modal
     setIsOpen(false);
   };
