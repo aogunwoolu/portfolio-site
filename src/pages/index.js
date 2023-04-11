@@ -3,7 +3,7 @@ import Layout from "../components/Layout"
 import StartPage from "../components/StartPage"
 import Projects from '../components/Projects';
 import AboutBall from '../components/AboutBall';
-import Abi_Radar from '../components/Radar';
+import AboutInfo from '../components/AboutInfo';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "../styles/global.css"
 
@@ -15,12 +15,12 @@ export default function Home() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }} className="overflow-hidden">
       <Layout>
-        <StartPage/>
+        <StartPage id="startPage"/>
         <br/>
-        <Projects/>
+        <AboutInfo id="radar"/>
         <br/>
-        <Abi_Radar/>
-        {/* <AboutBall/> */}
+        <Projects id="projects"/>
+        <br/>
       </Layout>
     </div>
   )

@@ -7,11 +7,11 @@ import { BsChevronDown } from 'react-icons/bs'
 import Navbar from './Navbar'
 import ContactFormModal from './ContactForm';
 
-export default function StartPage() {
+export default function StartPage({id}) {
 const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
+    <div id={id}>
     <div className={styles.nebula_img}>
         <Container className={styles.about_container}>
             <Row>

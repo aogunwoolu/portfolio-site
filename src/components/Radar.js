@@ -18,7 +18,7 @@ ChartJS.register(
     Legend,
 );
 
-function Abi_Radar() {
+function Abi_Radar({id}) {
 
     const [color, setColor] = useState('#fff')
 
@@ -71,7 +71,7 @@ function Abi_Radar() {
     }, []);
 
     return (
-        <div style={{maxWidth: '100%'}}>
+        <div className='m-8' id={id} style={{maxWidth: '100%'}}>
             <Radar 
                 id="chart"
                 className='chartjs-render-monitor'
