@@ -21,7 +21,7 @@ const [isOpen, setIsOpen] = useState(false);
                             <strong>Hey, I'm</strong>
                         </h3>
                         <h1>
-                            <p><span className="name">Abi</span>(sade),</p>
+                            <p><span className="highlight">Abi</span>(sade),</p>
                         </h1>
                         <h3>
                             <strong>Full-Stack Developer.</strong><br/>

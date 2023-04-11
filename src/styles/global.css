@@ -76,7 +76,7 @@ footer p{
   background:transparent;
 }
 
-h1 > p > span.name{
+p > span.highlight{
   color: #b556ff;
 }
 
