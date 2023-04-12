@@ -6,20 +6,6 @@ const ContactFormModal = ({isOpen, setIsOpen}) => {
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Send email here
-    // ...
-    // Reset form
-    setName('');
-    setSubject('');
-    setMessage('');
-
-    const mailtoHref = "mailto:a.gunwoolu@outlook.com?subject=Inquiry&body=Description";
-    // Close modal
-    setIsOpen(false);
-  };
-
   return (
       <Modal
         isOpen={isOpen}

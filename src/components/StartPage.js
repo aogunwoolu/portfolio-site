@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import * as styles from '../styles/start.module.css';
 import { FaGithub } from 'react-icons/fa';
 import { AiFillTwitterCircle, AiFillLinkedin } from 'react-icons/ai';
 import { BsChevronDown } from 'react-icons/bs';
-import Navbar from './Navbar';
 import ContactFormModal from './ContactForm';
 
 export default function StartPage({id}) {

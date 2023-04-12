@@ -4,6 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "~prismjs/themes/prism.css";
+
 * {
   margin: 0;
   padding: 0;
@@ -127,4 +129,3 @@ h3 > strong.skill-array {
 .icon:hover {
   transform: scale(1.1); /* increase the size of the icon by 10% on hover */
 }
-

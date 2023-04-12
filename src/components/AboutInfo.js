@@ -1,5 +1,5 @@
 import React from 'react'
-import Abi_Radar from './Radar';
+import AbiRadar from './Radar';
 
 function AboutInfo({id}) {
   return (
@@ -54,7 +54,7 @@ function AboutInfo({id}) {
             </div>
         </div>
         <div>
-            <Abi_Radar />
+            <AbiRadar />
         </div>
     </div>
   )

@@ -2,14 +2,11 @@ import React from "react"
 import Layout from "../components/Layout"
 import StartPage from "../components/StartPage"
 import Projects from '../components/Projects';
-import AboutBall from '../components/AboutBall';
 import AboutInfo from '../components/AboutInfo';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "../styles/global.css"
-
-import { Col, Container, Row, Button } from 'react-bootstrap';
-import * as styles from '../styles/start.module.css';
-import { BsChevronDown } from 'react-icons/bs'
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+deckDeckGoHighlightElement();
 
 export default function Home() {
   return (
