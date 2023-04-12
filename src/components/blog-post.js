@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { graphql } from "gatsby";
-import Layout from "./layout";
+import Layout from "./Layout";
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 deckDeckGoHighlightElement();
 
