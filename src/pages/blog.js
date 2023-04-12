@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { graphql, Link } from "gatsby"
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import "../styles/global.css"
+import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
+deckDeckGoHighlightElement();
 import Layout from "../components/Layout"
 
 const LIMIT = 3;
