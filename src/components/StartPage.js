@@ -28,11 +28,13 @@ export default function StartPage({id}) {
                 </h3>
                 <h3>
                   <strong className="skill-array">
-                    [Frontend,Backend,Databases] 
+                    [Frontend, Backend, Databases] 
                   </strong>
                 </h3>
                 <br/>
-                <Button onClick={()=>{setIsOpen(true)}} variant="flat">Contact Me</Button>
+                <a href="mailto:a.gounwoolu@outlook.com">
+                  <Button variant="flat">Contact Me</Button>
+                </a>
                 <br/>
                 <Container>
                   <Row className={styles.social_bar}>
@@ -40,7 +42,7 @@ export default function StartPage({id}) {
                       <FaGithub className="icon" onClick={() => window.open("https://github.com/aogunwoolu")} size={28}/>
                     </Col>
                     <Col>
-                      <AiFillTwitterCircle className="icon" onClick={() => window.open("https://github.com/aogunwoolu")} size={28}/>
+                      <AiFillTwitterCircle className="icon" onClick={() => window.open("https://twitter.com/home")} size={28}/>
                     </Col>
                     <Col>
                       <AiFillLinkedin className="icon" onClick={() => window.open("https://www.linkedin.com/in/abisade-ogunwoolu-0bb804155/")} size={28}/>
@@ -62,7 +64,7 @@ export default function StartPage({id}) {
           </Row>
         </Container>
       </div>
-      <ContactFormModal isOpen={isOpen} setIsOpen={setIsOpen}/>
+      {/* <ContactFormModal isOpen={isOpen} setIsOpen={setIsOpen}/> */}
     </div>
   );
 }

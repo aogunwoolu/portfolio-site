@@ -3,8 +3,8 @@ import { graphql, Link } from "gatsby"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "../styles/global.css"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
-deckDeckGoHighlightElement();
 import Layout from "../components/Layout"
+deckDeckGoHighlightElement();
 
 const LIMIT = 3;
 
@@ -29,8 +29,8 @@ const IndexPage = (props) => {
         {posts.map((post, i) =>
           <div key={i} className="post border-y py-8 border-gray-300 my-8">
             <Link className="cursor-pointer" to={"/post/" + post.node.frontmatter.slug}>
-              <div className="grid grid-cols-2">
-                <div className="col-span-1">
+              <div className="grid grid-cols-2 gap-8">
+                <div className="col-span-1 max-sm:col-span-2">
                   <div className="flex justify-start">
                     <div className="">
                       <p className="font-bold text-xs inline-block mr-1">{post.node.frontmatter.author}</p>
@@ -39,15 +39,17 @@ const IndexPage = (props) => {
                     </div>
                     <div className="max-sm:ml-auto"/>
                   </div>
-                  <h2 className="text-lg font-extrabold">{post.node.frontmatter.title}</h2>
-                  <p className="text-xs">{post.node.frontmatter.description}</p>
-                  {
-                    post.node.frontmatter.tags.map((tag, i) =>
-                      <span key={i} className="text-xs bg-purple-600 rounded-full px-2 py-1 text-white mr-2">{tag}</span>)
-                  }
+                  <h2 className="text-lg font-extrabold max-sm:text-center">{post.node.frontmatter.title}</h2>
+                  <p className="text-xs max-sm:text-center">{post.node.frontmatter.description}</p>
+                  <div class="flex justify-center sm:justify-start flex-wrap">
+                    {
+                      post.node.frontmatter.tags.map((tag, i) =>
+                        <span key={i} className="text-xs bg-purple-600 rounded-full px-2 py-1 text-white mr-2 mb-2">{tag}</span>)
+                    }
+                  </div>
                 </div>
-                <div className="col-span-1 max-sm:hidden">
-                  <img src={post.node.frontmatter.src} alt="post image" className="w-full max-w-md"/>
+                <div className="col-span-1 max-sm:hidden" style={{textAlign: "center"}}>
+                  <img src={post.node.frontmatter.src} alt="post" className="w-full max-w-md"/>
                 </div>
               </div>
             </Link>
