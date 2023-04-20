@@ -74,3 +74,13 @@ This issue would come in the form of the use of Gatsby's GraphQL local file plug
 **Gatsby cloud**:
 ![Gatsby cloud]()
 This managed CI/CD solution was very similar to vercel, so there was little issue setting it up to build upon push to main. The only issue came with transferring the DNS and web address to Gatsby cloud. However, after following the steps disclosed on their website I managed to fully transfer everything and achieved a fully hosted website.
+
+# **The backend**
+---
+An important part of the site I wanted to implement was the blogging aspect, this is because I wanted to show my journey of learning and interest in technologies. this meant first researching into how possible this was, and then how I could implement it within the Gatsby framework.
+
+through research I discovered a number of ways to implement it using Gatsby's built in GraphQL integration. One of these being MongoDB integration and the other being local markdown storage. both of these solutions are viable, so I began to experiment with the creation of the MongoDB solution utilising the MongoDB Atlas. I logged into the managed Atlas server and created a free tier hobbyist database where I created my first MongoDB database. After putting some test data into said database, I then set out to create the GraphQL connection in my Gatsby application. this was fairly straightforward, requiring the `connection string`, `username` and `password` like most database connection is. after this I could successfully query the database and use this data on the webpage.
+
+However, I wanted to experiment with the alternative and so I went about developing the markdown solution. while going down this rabbit hole, I discovered the [MDX/Markdown X](https://mdxjs.com/) technology which allowed for JSX items to be used within markdown (extending on the HTML inclusion in MD). I put that aside but intend to play around with it in the future. I continued to implement the basic markdown plugin for Gatsby, and tested it with the first post. this was successful and can be extended in the future using the MDX framework. 
+
+I concluded that the MongoDB was overkill for the requirements of a simple blog, and writing markdown is a lot more accessible than creating a JSON object every time I wanted to create a post. However, there is certainly opportunity to extend this functionality to make use of a DB in the future if need be.
