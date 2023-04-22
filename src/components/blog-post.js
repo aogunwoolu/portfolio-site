@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { graphql } from "gatsby";
 import Layout from "./Layout";
+import { FaPlay, FaPause, FaSync } from "react-icons/fa";
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
 deckDeckGoHighlightElement();
 
@@ -26,14 +27,25 @@ const Blog = ({ data }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  function calculate_min_read(html) {
+    const wordCount = html.replace(/<[^>]+>/g, '').split(/\s+/).length;
+    const wordsPerMinute = 200; // Average reading speed in words per minute
+    const minRead = Math.ceil(wordCount / wordsPerMinute);
+    return minRead;
+  }
+
   return (
     <Layout>
-      <div className="posts pt-16 mx-5">
+      <div className="posts pt-16 max-sm:mx-5 md:mx-44">
         <button onClick={() => window.history.back()} className="text-sm font-medium text-white mb-8">&larr; Back</button>
         <div className="post border-y py-8 border-gray-300 my-8">
           <h1 className="text-4xl font-extrabold">{post.frontmatter.title}</h1>
-          <p className="text-xs">{post.frontmatter.date}</p>
           <p className="font-bold text-xs">by {post.frontmatter.author}</p>
+          <div className="flex justify-start">
+          <p className="text-xs mx-0">{post.frontmatter.date}</p>
+          <p className="text-xs ml-5">{calculate_min_read(post.html)} min read</p>
+          <div className=" w-4/5"/>
+          </div>
         </div>
         <div className="flex">
           {/* w-4/5 */}
