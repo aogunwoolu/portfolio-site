@@ -72,14 +72,16 @@ When trying to deploy to vercel, the solution worked very well initially. This h
 
 This issue would come in the form of the use of Gatsby's GraphQL local file plugin which allowed for access to local files via a GraphQL API. As this plugin required an update to React 18, it was clear that vercel was no longer suitable for the deployment of the site. this meant I would need to find something, and luckily I had a backup:
 **Gatsby cloud**:
-![Gatsby cloud]()
+![Gatsby cloud](https://i.imgur.com/texce30.png)
 This managed CI/CD solution was very similar to vercel, so there was little issue setting it up to build upon push to main. The only issue came with transferring the DNS and web address to Gatsby cloud. However, after following the steps disclosed on their website I managed to fully transfer everything and achieved a fully hosted website.
 
 # **The backend**
 ---
 An important part of the site I wanted to implement was the blogging aspect, this is because I wanted to show my journey of learning and interest in technologies. this meant first researching into how possible this was, and then how I could implement it within the Gatsby framework.
 
-through research I discovered a number of ways to implement it using Gatsby's built in GraphQL integration. One of these being MongoDB integration and the other being local markdown storage. both of these solutions are viable, so I began to experiment with the creation of the MongoDB solution utilising the MongoDB Atlas. I logged into the managed Atlas server and created a free tier hobbyist database where I created my first MongoDB database. After putting some test data into said database, I then set out to create the GraphQL connection in my Gatsby application. this was fairly straightforward, requiring the `connection string`, `username` and `password` like most database connection is. after this I could successfully query the database and use this data on the webpage.
+through research I discovered a number of ways to implement it using Gatsby's built in GraphQL integration. One of these being MongoDB integration and the other being local markdown storage. both of these solutions are viable, so I began to experiment with the creation of the MongoDB solution utilising the MongoDB Atlas. I logged into the managed Atlas server and created a free tier hobbyist database where I created my first MongoDB database. After putting some test data into said database, I then set out to create the GraphQL connection in my Gatsby application. this was fairly straightforward, requiring the `connection string`, `username` and `password` like most database connection do. After this I could successfully query the database and use this data on the webpage.
+
+![MongoDB Atlas](https://i.imgur.com/E2RHcTy.png)
 
 However, I wanted to experiment with the alternative and so I went about developing the markdown solution. while going down this rabbit hole, I discovered the [MDX/Markdown X](https://mdxjs.com/) technology which allowed for JSX items to be used within markdown (extending on the HTML inclusion in MD). I put that aside but intend to play around with it in the future. I continued to implement the basic markdown plugin for Gatsby, and tested it with the first post. this was successful and can be extended in the future using the MDX framework. 
 
