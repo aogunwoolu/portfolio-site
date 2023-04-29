@@ -45,7 +45,7 @@ export default function LatestPosts(props) {
                     return (
                         <Link key={post.node.frontmatter.slug} className="cursor-pointer" to={"/post/" + post.node.frontmatter.slug}>
                             <div
-                                className="m-2 h-80 relative overflow-hidden min-w-md"
+                                className="m-2 h-80 mb-8 relative min-w-md"
                                 style={{
                                     backgroundColor: '#222',
                                     color: '#fff',
@@ -76,18 +76,18 @@ export default function LatestPosts(props) {
                                         background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(27, 18, 34, 0.90) 100%)',
                                     }}
                                 />
-                                <div className="absolute bottom-0 p-4 mb-10">
+                                <div className="absolute bottom-0 p-4 my-20 sm:my-12 justify-center items-center">
                                     {isRecent && (
                                         <div
-                                            className='px-3 py-1 text-sm w-fit rounded-full border-2 bg-transparent text-white'
+                                            className='px-3 text-sm w-fit rounded-full border-2 bg-transparent text-white'
                                             title='New post'
                                         >
                                             New
                                         </div>
                                     )}
-                                    <h1 className="mt-4 max-lg:text-base">{post.node.frontmatter.title}</h1>
+                                    <h1 className="mt-2 text-base">{post.node.frontmatter.title}</h1>
                                     <p className="text-xs mx-0">{post.node.frontmatter.date}</p>
-                                    <p className="text-sm md:text-xs h-12" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>{post.node.frontmatter.description}</p>
+                                    <p className="text-sm mb-3 sm:mb-5 md:text-xs h-12" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>{post.node.frontmatter.description}</p>
                                 </div>
                             </div>
                         </Link>
