@@ -50,25 +50,6 @@ const Blog = ({ data }) => {
         <div className="flex">
           {/* w-4/5 */}
           <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
-            {/* {post.headings.length > 0 && (
-              <div className="ml-8 p-10 border-l border-gray-300">
-                <h3 className="text-lg font-bold">Contents</h3>
-                <ul className="sticky top-16">
-                  {post.headings.map((heading, i) => (
-                    <li
-                      key={heading.id}
-                      className={`cursor-pointer pt-2 text-sm font-medium mt-2 ${
-                        activeHeading === heading.id ? "text-purple-600" : ""
-                      }`}
-                      onClick={() => headingsRef.current[i].scrollIntoView({ behavior: "smooth" })}
-                      ref={(el) => (headingsRef.current[i] = el)}
-                    >
-                      {heading.value}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )} */}
 
         </div>
         <div className="post border-t py-8 border-gray-300 my-8">
