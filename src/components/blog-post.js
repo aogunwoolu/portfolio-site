@@ -28,44 +28,59 @@ const Blog = ({ data }) => {
   }, []);
 
   function calculate_min_read(html) {
-    const wordCount = html.replace(/<[^>]+>/g, '').split(/\s+/).length;
+    const wordCount = html.replace(/<[^>]+>/g, "").split(/\s+/).length;
     const wordsPerMinute = 200; // Average reading speed in words per minute
     const minRead = Math.ceil(wordCount / wordsPerMinute);
     return minRead;
   }
 
+  const headingList = post.headings
+    .filter((heading) => heading.value && heading.value.toLowerCase() !== "table of contents");
+
   return (
     <Layout>
-      <div className="posts pt-16 max-sm:mx-5 md:mx-44">
-        <button onClick={() => window.history.back()} className="text-sm font-medium text-white mb-8">&larr; Back</button>
-        <div className="post border-y py-8 border-gray-300 my-8">
-          <h1 className="text-4xl font-extrabold">{post.frontmatter.title}</h1>
-          <p className="font-bold text-xs">by {post.frontmatter.author}</p>
-          <div className="flex justify-start">
-          <p className="text-xs mx-0">{post.frontmatter.date}</p>
-          <p className="text-xs ml-5">{calculate_min_read(post.html)} min read</p>
-          <div className=" w-4/5"/>
+      <div className="flex">
+        <div className="posts pt-16 max-sm:mx-5 md:mx-44">
+          <button onClick={() => window.history.back()} className="text-sm font-medium text-white mb-8">
+            &larr; Back
+          </button>
+          <div className="post border-y py-8 border-gray-300 my-8">
+            <h1 className="text-4xl font-extrabold">{post.frontmatter.title}</h1>
+            <p className="font-bold text-xs">by {post.frontmatter.author}</p>
+            <div className="flex justify-start">
+              <p className="text-xs mx-0">{post.frontmatter.date}</p>
+              <p className="text-xs ml-5">{calculate_min_read(post.html)} min read</p>
+              <div className="w-4/5" />
+            </div>
           </div>
-        </div>
-        <div className="flex">
-          {/* w-4/5 */}
-          <div className="
-            [&_a]:text-[#b556ff]
-            [&_code]:text-white [&_code]:font-bold [&_code]:bg-[#282a36] [&_code]:rounded-md [&_code]:py-2 [&_code]:px-2
-            [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:rounded-md [&_img]:my-3 
-            [&_h1]:text-3xl
-            "
-            
-            dangerouslySetInnerHTML={{ __html: post.html }} 
-          />
-
-        </div>
-        <div className="post border-t py-8 border-gray-300 my-8">
-          {post.frontmatter.tags.map((tag, i) => (
-            <span key={i} className="text-xs bg-gray-300 rounded-full px-2 py-1 text-gray-700 mr-2">
-              {tag}
-            </span>
-          ))}
+          <div className="md:grid md:grid-flow-col">
+            <div
+              className="[&_a]:text-[#b556ff] [&_code]:text-white [&_code]:font-bold [&_code]:bg-[#282a36] [&_code]:rounded-md [&_code]:py-2 [&_code]:px-2 [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:rounded-md [&_img]:my-3 [&_h1]:text-3xl"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
+            <div className="ml-8 hidden lg:block">
+              <div className="sticky top-10">
+                <h2 className="text-xl font-bold mb-4">Table of Contents</h2>
+                <ul>
+                  {headingList.map((heading) => (
+                    <li
+                      key={heading.id}
+                      className={`text-sm my-4 ${activeHeading === heading.id ? "font-bold" : ""}`}
+                    >
+                      <a href={`#${heading.id}`}>{heading.value}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="post border-t py-8 border-gray-300 my-8">
+            {post.frontmatter.tags.map((tag, i) => (
+              <span key={i} className="text-xs bg-gray-300 rounded-full text-gray-700">
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </Layout>
