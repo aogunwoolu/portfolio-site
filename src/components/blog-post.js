@@ -119,7 +119,7 @@ const Blog = ({ data }) => {
           </div>
           <div className="post border-t py-8 border-gray-300 my-8">
             {post.frontmatter.tags.map((tag, i) => (
-              <span key={i} className="text-xs bg-gray-300 rounded-full py-1 px-2 text-gray-700">
+              <span key={i} className="text-xs bg-gray-300 rounded-full py-1 px-2 mr-2 text-gray-700">
                 {tag}
               </span>
             ))}
