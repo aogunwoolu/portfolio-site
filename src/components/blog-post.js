@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Layout from "./Layout";
 import { FaPlay, FaPause, FaSync } from "react-icons/fa";
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
@@ -41,9 +41,9 @@ const Blog = ({ data }) => {
     <Layout>
       <div className="flex">
         <div className="posts pt-16 max-sm:mx-5 md:mx-44">
-          <button onClick={() => window.history.back()} className="text-sm font-medium text-white mb-8">
+          <Link to="/blog" className="text-sm font-medium text-white mb-8">
             &larr; Back
-          </button>
+          </Link>
           <div className="post border-y py-8 border-gray-300 my-8">
             <h1 className="text-4xl font-extrabold">{post.frontmatter.title}</h1>
             <p className="font-bold text-xs">by {post.frontmatter.author}</p>
