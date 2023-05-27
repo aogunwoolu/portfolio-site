@@ -9,6 +9,7 @@ const Blog = ({ data }) => {
   const post = data.markdownRemark;
   const [activeHeading, setActiveHeading] = useState(null);
   const headingsRef = useRef([]);
+  const [isReading, setIsReading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,8 +35,32 @@ const Blog = ({ data }) => {
     return minRead;
   }
 
-  const headingList = post.headings
-    .filter((heading) => heading.value && heading.value.toLowerCase() !== "table of contents");
+  const handleReadAloud = () => {
+    const stripHTML = (html) => {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      return doc.body.textContent || '';
+    };
+  
+    const textContent = stripHTML(post.html);
+  
+    const speech = new SpeechSynthesisUtterance(textContent);
+    speech.lang = 'en-US';
+    speechSynthesis.speak(speech);
+  
+    setIsReading(true);
+  };
+  
+  const handlePauseReading = () => {
+    speechSynthesis.cancel();
+    setIsReading(false);
+  };
+
+  const handleRestartReading = () => {
+    handlePauseReading();
+    handleReadAloud();
+  };
+
+  const headingList = post.headings.filter((heading) => heading.value && heading.value.toLowerCase() !== "table of contents");
 
   return (
     <Layout>
@@ -51,11 +76,29 @@ const Blog = ({ data }) => {
               <p className="text-xs mx-0">{post.frontmatter.date}</p>
               <p className="text-xs ml-5">{calculate_min_read(post.html)} min read</p>
               <div className="w-4/5" />
+              {!isReading ? (
+                <button className="ml-4 text-sm text-gray-600 mr-20" onClick={()=>handleReadAloud()}>
+                  <FaPlay />
+                </button>
+              ) : (
+                <div className=" flex flex-row gap-3 mr-10">
+                  <button className="ml-4 text-sm text-gray-600" onClick={handlePauseReading}>
+                    <FaPause />
+                  </button>
+                  <button className="ml-1 text-sm text-gray-600" onClick={handleRestartReading}>
+                    <FaSync />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
           <div className="md:grid md:grid-flow-col">
             <div
-              className="[&_a]:text-[#b556ff] [&_code]:text-white [&_code]:font-bold [&_code]:bg-[#282a36] [&_code]:rounded-md [&_code]:py-2 [&_code]:px-2 [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:rounded-md [&_img]:my-3 [&_h1]:text-3xl"
+              className="
+              [&_a]:text-[#b556ff] 
+              [&_code]:text-white [&_code]:font-bold [&_code]:bg-[#282a36] [&_code]:rounded-md [&_code]:py-2 [&_code]:px-2
+              [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:rounded-md [&_img]:my-3
+              [&_h1]:text-3xl"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
             <div className={`ml-8 hidden ${(headingList.length === 0)? "":"lg:block"}`}>
@@ -76,7 +119,7 @@ const Blog = ({ data }) => {
           </div>
           <div className="post border-t py-8 border-gray-300 my-8">
             {post.frontmatter.tags.map((tag, i) => (
-              <span key={i} className="text-xs bg-gray-300 rounded-full text-gray-700">
+              <span key={i} className="text-xs bg-gray-300 rounded-full py-1 px-2 text-gray-700">
                 {tag}
               </span>
             ))}
