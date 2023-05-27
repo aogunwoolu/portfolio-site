@@ -58,7 +58,7 @@ const Blog = ({ data }) => {
               className="[&_a]:text-[#b556ff] [&_code]:text-white [&_code]:font-bold [&_code]:bg-[#282a36] [&_code]:rounded-md [&_code]:py-2 [&_code]:px-2 [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:rounded-md [&_img]:my-3 [&_h1]:text-3xl"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
-            <div className="ml-8 hidden lg:block">
+            <div className={`ml-8 hidden ${(headingList.length === 0)? "":"lg:block"}`}>
               <div className="sticky top-10">
                 <h2 className="text-xl font-bold mb-4">Table of Contents</h2>
                 <ul>
