@@ -49,7 +49,15 @@ const Blog = ({ data }) => {
         </div>
         <div className="flex">
           {/* w-4/5 */}
-          <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
+          <div className="
+            [&_a]:text-[#b556ff]
+            [&_code]:text-white [&_code]:font-bold [&_code]:bg-[#282a36] [&_code]:rounded-md [&_code]:py-2 [&_code]:px-2
+            [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:rounded-md [&_img]:my-3 
+            [&_h1]:text-3xl
+            "
+            
+            dangerouslySetInnerHTML={{ __html: post.html }} 
+          />
 
         </div>
         <div className="post border-t py-8 border-gray-300 my-8">
