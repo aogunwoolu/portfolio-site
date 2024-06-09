@@ -1,6 +1,6 @@
-import { Link } from 'gatsby';
-import React, { useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { Link } from "gatsby"
+import React, { useState } from "react"
+import { FaBars, FaTimes } from "react-icons/fa"
 
 export function MenuLinks({ onClick, isVertical }) {
   return (
@@ -8,10 +8,18 @@ export function MenuLinks({ onClick, isVertical }) {
       <Link to="/" onClick={onClick} className={isVertical ? "my-2" : "mx-4"}>
         Home
       </Link>
-      <Link to="#radar" onClick={onClick} className={isVertical ? "my-2" : "mx-4"}>
+      <Link
+        to="#radar"
+        onClick={onClick}
+        className={isVertical ? "my-2" : "mx-4"}
+      >
         About
       </Link>
-      <Link to="#projects" onClick={onClick} className={isVertical ? "my-2" : "mx-4"}>
+      <Link
+        to="#projects"
+        onClick={onClick}
+        className={isVertical ? "my-2" : "mx-4"}
+      >
         Projects
       </Link>
       <Link to="/blog" className={isVertical ? "my-2" : "mx-4"}>
@@ -21,30 +29,34 @@ export function MenuLinks({ onClick, isVertical }) {
         Resume
       </Link> */}
     </div>
-  );
+  )
 }
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   const toggleMenu = () => {
-    setOpen(!open);
-  };
+    setOpen(!open)
+  }
 
-  const handleLinkClick = (e) => {
-    e.preventDefault();
-    const target = e.target.hash;
-    if (window.location.pathname === '/') {
-      if (!target) return;
-      document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+  const handleLinkClick = e => {
+    e.preventDefault()
+    const target = e.target.hash
+    if (window.location.pathname === "/") {
+      if (!target) return
+      document.querySelector(target).scrollIntoView({ behavior: "smooth" })
     } else {
-      window.location.href = `/#${target.substring(1)}`;
+      window.location.href = `/#${target.substring(1)}`
     }
-    toggleMenu();
-  };
+    toggleMenu()
+  }
 
   return (
-    <nav initial={false} animate={open ? 'open' : 'closed'} className="menu mynav">
+    <nav
+      initial={false}
+      animate={open ? "open" : "closed"}
+      className={`menu mynav ${open ? "bg-black" : ""}`}
+    >
       <div className="hidden md:mx-8 md:flex md:justify-end">
         <MenuLinks onClick={handleLinkClick} />
       </div>
@@ -60,5 +72,5 @@ export default function Navbar() {
         </div>
       )}
     </nav>
-  );
+  )
 }
