@@ -31,32 +31,32 @@ const IndexPage = props => {
       <div className="posts pt-16 mx-5">
         <h1 className=" font-bold text-lg">Blog</h1>
         {posts.map((post, i) => (
-          <div key={i} className="post border-y py-8 border-gray-300 my-8">
+          <div key={i} className="post border-y py-8 border-gray-300 my-8 cursor-pointer">
             <Link
               className="cursor-pointer"
               to={"/post/" + post.node.frontmatter.slug}
             >
-              <div className="grid grid-cols-2 gap-8">
-                <div className="col-span-1 max-sm:col-span-2">
-                  <div className="flex justify-start">
-                    <div className="">
-                      <p className="font-bold text-xs inline-block mr-1">
+              <div className="grid grid-cols-2 gap-8 cursor-pointer">
+                <div className="col-span-1 max-sm:col-span-2 cursor-pointer">
+                  <div className="flex justify-start cursor-pointer">
+                    <div className="cursor-pointer">
+                      <p className="font-bold text-xs inline-block mr-1 cursor-pointer">
                         {post.node.frontmatter.author}
                       </p>
                       •
-                      <p className="text-xs inline-block ml-1">
+                      <p className="text-xs inline-block ml-1 cursor-pointer">
                         {post.node.frontmatter.date}
                       </p>
                     </div>
                     <div className="max-sm:ml-auto" />
                   </div>
-                  <h2 className="text-lg font-extrabold max-sm:text-center">
+                  <h2 className="text-lg font-extrabold max-sm:text-center cursor-pointer">
                     {post.node.frontmatter.title}
                   </h2>
-                  <p className="text-xs max-sm:text-center">
+                  <p className="text-xs max-sm:text-center cursor-pointer">
                     {post.node.frontmatter.description}
                   </p>
-                  <div className="flex justify-center sm:justify-start flex-wrap">
+                  <div className="flex justify-center sm:justify-start flex-wrap cursor-pointer">
                     {post.node.frontmatter.tags.map((tag, i) => (
                       <span
                         key={i}
@@ -68,13 +68,13 @@ const IndexPage = props => {
                   </div>
                 </div>
                 <div
-                  className="col-span-1 max-sm:hidden"
+                  className="col-span-1 max-sm:hidden flex justify-center align-middle cursor-pointer"
                   style={{ textAlign: "center" }}
                 >
                   <img
                     src={post.node.frontmatter.src}
                     alt="post"
-                    className="w-full max-w-md"
+                    className="w-full max-w-md cursor-pointer"
                   />
                 </div>
               </div>
