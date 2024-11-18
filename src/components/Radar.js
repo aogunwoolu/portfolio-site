@@ -54,7 +54,7 @@ function Abi_Radar({id}) {
         datasets: [
         {
             label: 'Skills',
-            data: [7, 9, 8, 5, 9, 10, 5, 7],
+            data: [3, 2, 2, 1, 5, 2, 1, 2],
             borderColor: color,
             borderWidth: 3,
         },

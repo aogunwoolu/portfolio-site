@@ -35,7 +35,6 @@ function AboutInfo({id}) {
                         <li>Django</li>
                         <li>Golang</li>
                         <li>SQL</li>
-                        <li>Redis</li>
                     </ul>
                 </div>
                 <div>
