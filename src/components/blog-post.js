@@ -70,7 +70,7 @@ const Blog = ({ data }) => {
   return (
     <Layout>
       <div className="flex">
-        <div className="posts pt-16 max-sm:mx-5 md:mx-44">
+        <div className="posts pt-16 mx-3 max-sm:mx-5 md:mx-44 w-screen">
           <Link to="/blog" className="text-sm font-medium text-white mb-8">
             &larr; Back
           </Link>
