@@ -51,13 +51,6 @@ export default function StartPage({ id }) {
                       />
                     </Col>
                     <Col>
-                      <AiFillTwitterCircle
-                        className="icon"
-                        onClick={() => window.open("https://twitter.com/home")}
-                        size={28}
-                      />
-                    </Col>
-                    <Col>
                       <AiFillLinkedin
                         className="icon"
                         onClick={() =>
