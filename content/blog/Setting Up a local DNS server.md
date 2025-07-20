@@ -4,7 +4,7 @@ description: In order to resolve dns names on my local network, I decided to set
 src: https://imgur.com/a/naFusJe
 author: Abisade Ogunwoolu
 slug: setting-up-bind-9-dns-server
-date: 2024-11-19
+date: 2025-07-20
 tags:
   - DNS
   - Bind-9
