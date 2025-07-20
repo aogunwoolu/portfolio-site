@@ -116,7 +116,11 @@ const Blog = ({ data }) => {
               [&_a]:text-[#b556ff] 
               [&_code]:text-white [&_code]:font-bold [&_code]:bg-[#282a36] [&_code]:rounded-md [&_code]:py-2 [&_code]:px-2
               [&_img]:w-full [&_img]:h-full [&_img]:object-cover [&_img]:rounded-md [&_img]:my-3
-              [&_h1]:text-3xl"
+              [&_h1]:text-3xl [&_h1]:my-4 [&_h1]:font-bold [&_h2]:text-2xl [&_h2]:my-3 [&_h2]:font-bold
+              [&_h3]:text-xl [&_h3]:my-2 [&_h3]:font-bold
+              [&_h4]:text-lg [&_h4]:my-2 [&_h4]:font-bold
+              [&_h5]:text-base [&_h5]:my-2 [&_h5]:font-bold
+              [&_li]:my-2 [&_li]:text-sm [&_li]:list-disc [&_li]:ml-5 "
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
             <div
