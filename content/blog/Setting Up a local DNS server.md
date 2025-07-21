@@ -1,7 +1,7 @@
 ---
 title: Setting Up a local DNS server
 description: In order to resolve dns names on my local network, I decided to set up a local DNS server. This post documents the steps I took to set up a local DNS server using bind-9. 
-src: https://imgur.com/a/naFusJe
+src: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxm_z9oG2fGAtdP8-NnnLPpbrLh95Dt66zBA&s
 author: Abisade Ogunwoolu
 slug: setting-up-bind-9-dns-server
 date: 2025-07-20
@@ -11,7 +11,7 @@ tags:
   - Linux
 ---
 
-While setting up [visual studio code server](https://github.com/coder/code-server) on my respberrry pi, i wanted to access the server using a domain name instead of the ip address. I wasn't too sure about how to go about it, so i went for creating a local DNS network for my home network. I used bind-9 to set up the DNS server. Bind-9 is a popular DNS server software that is used to resolve domain names to IP addresses on the internet. It is a powerful and flexible tool that can be configured to meet the needs of any network which i felt was perfect for my needs!
+While setting up [visual studio code server](https://github.com/coder/code-server) on my respberry pi, i wanted to access the server using a domain name instead of the ip address. I wasn't too sure about how to go about it, so i went for creating a local DNS network for my home network. I used bind-9 to set up the DNS server. Bind-9 is a popular DNS server software that is used to resolve domain names to IP addresses on the internet. It is a powerful and flexible tool that can be configured to meet the needs of any network which i felt was perfect for my needs!
 
 I first designed the initial architecture for my local network. This was what i came up with:
 ![Local DNS Architecture](https://i.imgur.com/qzRGYo8.png)
@@ -41,7 +41,7 @@ services:
 ```
 This uses the official latest bind-9 image, setting up to use the London timezone (where i am based). Bind-9 uses port 53 for both UDP and TCP so these ports were exposed accordingly. This made the bind-9 runnable. I then did some research into how to configure bind-9 as a DNS server. I found the official bind-9 docs [here](https://bind9.readthedocs.io/en/latest/). 
 
-### Step 2: Configurre named.conf
+### Step 2: Configure named.conf
 This allowed me to understand that i needed a `named.conf` file to configure the DNS server. I created a `config` directory and added the `named.conf` file to it. Here is the content of the `named.conf` file:
 ```bash
 acl internal {
