@@ -1,14 +1,12 @@
-// scrollable list of latest posts
-// --------------------------------------------------------
+import React from 'react'
+import { Link, graphql, useStaticQuery } from 'gatsby'
+import { motion } from 'framer-motion'
+import moment from 'moment'
 
-import React from 'react';
-import { Link, graphql, useStaticQuery } from 'gatsby';
-import moment from 'moment';
-
-export default function LatestPosts(props) {
-    const data = useStaticQuery(graphql`
+export default function LatestPosts({ id }) {
+  const data = useStaticQuery(graphql`
     query {
-      posts: allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      posts: allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
         edges {
           node {
             frontmatter {
@@ -24,77 +22,101 @@ export default function LatestPosts(props) {
         }
       }
     }
-  `);
+  `)
 
-    const limit = 3;
-    const posts = data.posts.edges.slice(0, limit);
+  const cutoff = new Date()
+  cutoff.setDate(cutoff.getDate() - 3)
+  const posts = data.posts.edges.slice(0, 3)
 
-    const cutoffDate = new Date();
-    cutoffDate.setDate((new Date).getDate() - 3);
-    
-    return (
-        <div className='mx-5'>
-            <h3 className='text-xl font-bold'>Latest Blog Posts</h3>
-            <div id={props.id} className="divide-y gap-x-10 shadow md:grid md:grid-cols-3 md:gap-px md:divide-y-0">
-                {posts.map((post, postIdx) => {
-                    const postDate = moment(post.node.frontmatter.date, 'DD/MM/YYYY').toDate();
-                    const isRecent = postDate >= cutoffDate;
-
-                    console.log(postDate, cutoffDate, isRecent)
-
-                    return (
-                        <Link key={post.node.frontmatter.slug} className="cursor-pointer" to={"/post/" + post.node.frontmatter.slug}>
-                            <div
-                                className="m-2 h-80 mb-8 relative min-w-md cursor-pointer"
-                                style={{
-                                    backgroundColor: '#222',
-                                    color: '#fff',
-                                    fontSize: '2rem',
-                                    fontWeight: 'thin',
-                                }}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.transform = 'scale(1.05)';
-                                    e.currentTarget.style.backgroundColor = '#b14eff';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.transform = 'scale(1)';
-                                    e.currentTarget.style.backgroundColor = '#222';
-                                }}
-                            >
-                                <img
-                                    src={post.node.frontmatter.src}
-                                    alt={post.node.frontmatter.title}
-                                    className="cursor-pointer"
-                                    style={{
-                                        objectFit: 'cover',
-                                        width: '100%',
-                                        height: '100%',
-                                    }}
-                                />
-                                <div
-                                    className="absolute inset-0 cursor-pointer"
-                                    style={{
-                                        background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(27, 18, 34, 0.90) 100%)',
-                                    }}
-                                />
-                                <div className="absolute bottom-0 p-4 my-20 sm:my-12 justify-center items-center cursor-pointer">
-                                    {isRecent && (
-                                        <div
-                                            className='px-3 text-sm w-fit rounded-full cursor-pointer border-2 bg-transparent text-white'
-                                            title='New post'
-                                        >
-                                            New
-                                        </div>
-                                    )}
-                                    <h1 className="mt-2 text-base cursor-pointer">{post.node.frontmatter.title}</h1>
-                                    <p className="text-xs mx-0 cursor-pointer">{post.node.frontmatter.date}</p>
-                                    <p className="text-sm mb-3 sm:mb-5 md:text-xs h-12 cursor-pointer" style={{ wordWrap: 'break-word', overflowWrap: 'break-word' }}>{post.node.frontmatter.description}</p>
-                                </div>
-                            </div>
-                        </Link>
-                    );}
-                )}
-            </div>
+  return (
+    <section id={id} className="py-24">
+      <div className="max-w-6xl mx-auto px-6">
+        <p
+          className="text-xs font-semibold tracking-[0.22em] uppercase mb-2"
+          style={{ color: '#b556ff' }}
+        >
+          Writing
+        </p>
+        <div className="flex items-end justify-between mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Latest Posts</h2>
+          <Link
+            to="/blog"
+            className="text-sm font-medium text-gray-500 hover:text-white transition-colors border-b border-gray-700 hover:border-white pb-0.5"
+          >
+            View all →
+          </Link>
         </div>
-    );
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {posts.map(({ node }, i) => {
+            const { title, slug, date, description, src } = node.frontmatter
+            const isRecent = moment(date, 'DD/MM/YYYY').toDate() >= cutoff
+
+            return (
+              <motion.div
+                key={slug}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ delay: i * 0.12, duration: 0.55, ease: 'easeOut' }}
+              >
+                <Link to={`/post/${slug}`} className="block group h-full">
+                  <div
+                    className="relative h-72 overflow-hidden rounded-xl flex flex-col justify-end"
+                    style={{
+                      border:     '1px solid rgba(255,255,255,0.07)',
+                      transition: 'border-color 0.3s, box-shadow 0.3s',
+                      background: '#0d0d18',
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.borderColor = 'rgba(181,86,255,0.45)'
+                      e.currentTarget.style.boxShadow  = '0 0 32px rgba(143,0,255,0.18)'
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'
+                      e.currentTarget.style.boxShadow  = 'none'
+                    }}
+                  >
+                    {src && (
+                      <img
+                        src={src}
+                        alt={title}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    )}
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        background:
+                          'linear-gradient(to top, rgba(4,1,12,0.97) 0%, rgba(4,1,12,0.6) 50%, transparent 100%)',
+                      }}
+                    />
+                    <div className="relative z-10 p-5">
+                      {isRecent && (
+                        <span
+                          className="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold mb-2"
+                          style={{
+                            background: 'rgba(181,86,255,0.18)',
+                            border:     '1px solid rgba(181,86,255,0.5)',
+                            color:      '#d4a0ff',
+                          }}
+                        >
+                          New
+                        </span>
+                      )}
+                      <h3 className="font-semibold text-white text-base leading-snug mb-1">{title}</h3>
+                      <p className="text-xs text-gray-500 mb-2">{date}</p>
+                      <p className="text-xs text-gray-400 leading-relaxed" style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                        {description}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
 }

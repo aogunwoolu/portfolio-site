@@ -1,9 +1,8 @@
 .nebula_img{
-    background-image: url('../../static/mainbg.png');
-    background-size: cover;
-    background-position:center;
+    position: relative;
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 .about_me{
     color: white;
@@ -13,6 +12,8 @@
 .about_container{
     height: 100vh;
     background-image: linear-gradient(to right, #0c0c0c 0%, #0c0c0c 50%, #0c0c0c02 100%);
+    position: relative;
+    z-index: 1;
 }
 
 .content {
