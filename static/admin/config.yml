@@ -1,0 +1,92 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# SETUP REQUIRED (one-time):
+#
+# 1. Go to https://github.com/settings/developers → "OAuth Apps" → "New OAuth App"
+#    - Application name:     Portfolio CMS
+#    - Homepage URL:         https://abisade.dev
+#    - Authorization callback URL: https://abisade.dev/admin/
+#      (for local dev also add: http://localhost:8000/admin/)
+#
+# 2. Copy the "Client ID" and paste it as the value of `app_id` below.
+#    (No client secret needed — PKCE flow is fully client-side.)
+#
+# 3. See index.html for the Unsplash API key setup.
+# ─────────────────────────────────────────────────────────────────────────────
+
+backend:
+  name: github
+  repo: aogunwoolu/portfolio-site
+  branch: master
+  auth_type: pkce
+  app_id: Ov23livqjrGqShlnnNey  # ← replace this
+
+# Custom logo — shown on the login screen (logo_url works in Decap v3.3.x)
+logo_url: /admin/logo.svg
+
+site_url: https://abisade.dev
+display_url: https://abisade.dev
+
+# Where uploaded images are committed in the repo
+media_folder: static/images/blog
+# Public URL prefix for those images
+public_folder: /images/blog
+
+collections:
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    folder: content/blog
+    create: true
+    delete: true
+    slug: "{{fields.slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        hint: The full post title shown in the heading.
+
+      - label: Slug
+        name: slug
+        widget: string
+        hint: "URL path — lowercase, hyphens only. E.g. my-post-title"
+        pattern:
+          - "^[a-z0-9-]+$"
+          - "Lowercase letters, numbers and hyphens only"
+
+      - label: Author
+        name: author
+        widget: string
+        default: Abisade Ogunwoolu
+
+      - label: Date
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "DD/MM/YYYY"
+        time_format: false
+
+      - label: Description
+        name: description
+        widget: text
+        hint: Short summary shown in blog card previews. Keep it under 160 characters.
+
+      - label: Tags
+        name: tags
+        widget: list
+        field:
+          label: Tag
+          name: tag
+          widget: string
+
+      - label: Header Image
+        name: src
+        widget: header-image
+        required: false
+        hint: "Upload an image to the repo, paste any URL, or search Unsplash."
+
+      - label: Body
+        name: body
+        widget: markdown
+        hint: "Use the image toolbar button to upload images inline. Use the '+' component button to insert an Unsplash image with search."

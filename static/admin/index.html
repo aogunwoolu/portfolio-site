@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Admin · abisade.dev</title>
+
+  <!-- ── Dark theme — applied to the whole page ── -->
+  <style id="__site-theme">
+    *, *::before, *::after { box-sizing: border-box; }
+
+    /* ── Palette ── */
+    :root {
+      --ac-bg:        #04010c;
+      --ac-bg-light:  #0d0820;
+      --ac-surface:   #110c22;
+      --ac-border:    rgba(181,86,255,0.15);
+      --ac-purple:    #b556ff;
+      --ac-purple-dk: #7000cc;
+      --ac-text:      #e2e8f0;
+      --ac-muted:     #94a3b8;
+      --ac-error:     #f87171;
+    }
+
+    /* ── Page-level backgrounds ── */
+    html, body {
+      margin: 0;
+      background: var(--ac-bg) !important;
+      color: var(--ac-text) !important;
+      font-family: system-ui, sans-serif !important;
+      color-scheme: dark;
+    }
+
+    /* ── Root containers Decap uses ── */
+    /* #nc-root > div catches the styled-components layout wrapper Decap renders */
+    #nc-root,
+    #cms-root,
+    #nc-root > div,
+    #nc-root > div > div {
+      background: var(--ac-bg) !important;
+      color: var(--ac-text) !important;
+      min-height: 0;
+    }
+    #nc-root, #cms-root { min-height: 100vh; }
+
+    /* ── Inputs and textareas ── */
+    input, textarea, select {
+      background: var(--ac-surface) !important;
+      color: var(--ac-text) !important;
+      border-color: var(--ac-border) !important;
+      caret-color: var(--ac-purple) !important;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none !important;
+      border-color: var(--ac-purple) !important;
+      box-shadow: 0 0 0 3px rgba(181,86,255,0.18) !important;
+    }
+    input::placeholder, textarea::placeholder {
+      color: var(--ac-muted) !important;
+    }
+
+    /* ── CodeMirror (markdown editor) — stable class names ── */
+    .cm-editor { background: var(--ac-surface) !important; }
+    .cm-content, .cm-line { color: var(--ac-text) !important; }
+    .cm-activeLine { background: rgba(181,86,255,0.06) !important; }
+    .cm-cursor { border-left-color: var(--ac-purple) !important; }
+    .cm-selectionBackground { background: rgba(181,86,255,0.22) !important; }
+    .cm-gutters {
+      background: var(--ac-surface) !important;
+      border-right: 1px solid var(--ac-border) !important;
+      color: var(--ac-muted) !important;
+    }
+    .CodeMirror {
+      background: var(--ac-surface) !important;
+      color: var(--ac-text) !important;
+    }
+    .CodeMirror-cursor { border-left-color: var(--ac-purple) !important; }
+    .CodeMirror-selected { background: rgba(181,86,255,0.22) !important; }
+
+    /* ── Scrollbars ── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(181,86,255,0.3);
+      border-radius: 99px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(181,86,255,0.55); }
+
+    /* ── Decap login page ── */
+    [class*="AuthenticationPage"],
+    [class*="authenticationPage"] {
+      background: var(--ac-bg) !important;
+    }
+  </style>
+
+
+</head>
+<body>
+
+  <!--
+  ══════════════════════════════════════════════════════════════════
+  UNSPLASH SETUP
+  ══════════════════════════════════════════════════════════════════
+  The Unsplash key is injected at build time by gatsby-node.js into the
+  placeholder __UNSPLASH_KEY__ below. It never lives in source code.
+
+  1. Create a free account at https://unsplash.com/developers
+  2. Click "New Application" → accept terms → choose "Demo"
+     (50 req/hour, plenty for personal use)
+  3. Copy your "Access Key" and add it as an environment variable:
+
+     Gatsby Cloud: Site Settings → Environment Variables
+                   Key:   UNSPLASH_ACCESS_KEY
+                   Value: your_key_here
+
+     Local dev:    add to .env.development (already in .gitignore)
+                   UNSPLASH_ACCESS_KEY=your_key_here
+  ══════════════════════════════════════════════════════════════════
+  -->
+
+  <!-- Decap CMS — includes React 18 & ReactDOM internally -->
+  <script src="https://unpkg.com/decap-cms@^3.3.3/dist/decap-cms.js"></script>
+
+  <!-- Babel Standalone — lets us write JSX in script tags below -->
+  <script src="https://unpkg.com/@babel/standalone@^7/babel.min.js"></script>
+
+  <script type="text/babel">
+    const UNSPLASH_ACCESS_KEY = '__UNSPLASH_KEY__';
+
+    const { useState, useEffect, useRef, useCallback } = React;
+
+    // ═════════════════════════════════════════════════════════════════════════
+    // Shared Unsplash search panel — used by both the header image widget
+    // and the inline image editor component.
+    // ═════════════════════════════════════════════════════════════════════════
+    const UnsplashSearchPanel = ({ onSelect, compact = false }) => {
+      const [query, setQuery]     = useState('');
+      const [results, setResults] = useState([]);
+      const [loading, setLoading] = useState(false);
+      const [error, setError]     = useState('');
+
+      const search = useCallback(async () => {
+        if (!query.trim()) return;
+        if (!UNSPLASH_ACCESS_KEY || UNSPLASH_ACCESS_KEY === '__UNSPLASH_KEY__') {
+          setError('Unsplash key not set. Add UNSPLASH_ACCESS_KEY in Gatsby Cloud environment variables.');
+          return;
+        }
+        setLoading(true);
+        setError('');
+        try {
+          const res = await fetch(
+            `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query.trim())}&per_page=20&orientation=landscape&client_id=${UNSPLASH_ACCESS_KEY}`
+          );
+          if (!res.ok) throw new Error(`Unsplash error: ${res.status}`);
+          const data = await res.json();
+          setResults(data.results || []);
+          if ((data.results || []).length === 0) setError(`No results for "${query}"`);
+        } catch (e) {
+          setError(e.message);
+        }
+        setLoading(false);
+      }, [query]);
+
+      const handleSelect = async (photo) => {
+        // Required by Unsplash API guidelines — trigger the download endpoint
+        try {
+          const sep = photo.links.download_location.includes('?') ? '&' : '?';
+          await fetch(`${photo.links.download_location}${sep}client_id=${UNSPLASH_ACCESS_KEY}`);
+        } catch (_) {}
+        onSelect(photo.urls.regular, `Photo by ${photo.user.name} on Unsplash`);
+      };
+
+      const s = {
+        wrap: { display: 'flex', flexDirection: 'column', gap: 8 },
+        row: { display: 'flex', gap: 8 },
+        input: {
+          flex: 1, padding: '7px 12px', border: '1px solid #ddd',
+          borderRadius: 6, fontSize: 13, outline: 'none',
+        },
+        btn: {
+          padding: '7px 14px', background: '#b556ff', color: '#fff',
+          border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 13,
+          whiteSpace: 'nowrap',
+        },
+        grid: {
+          display: 'grid',
+          gridTemplateColumns: `repeat(${compact ? 3 : 4}, 1fr)`,
+          gap: 6,
+          maxHeight: compact ? 200 : 280,
+          overflowY: 'auto',
+        },
+        thumb: {
+          width: '100%', aspectRatio: '16/9', objectFit: 'cover',
+          cursor: 'pointer', borderRadius: 4, display: 'block',
+          border: '2px solid transparent', transition: 'border-color 0.15s',
+        },
+        attribution: {
+          position: 'absolute', bottom: 0, left: 0, right: 0,
+          background: 'rgba(0,0,0,0.55)', color: '#fff', fontSize: 10,
+          padding: '2px 4px', borderRadius: '0 0 4px 4px',
+          whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+        },
+        error: { color: '#c0392b', fontSize: 12, margin: '4px 0' },
+      };
+
+      return (
+        <div style={s.wrap}>
+          <div style={s.row}>
+            <input
+              style={s.input}
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && search()}
+              placeholder="Search Unsplash…"
+              aria-label="Search Unsplash"
+            />
+            <button style={s.btn} onClick={search} disabled={loading}>
+              {loading ? '…' : 'Search'}
+            </button>
+          </div>
+          {error && <p style={s.error}>{error}</p>}
+          {results.length > 0 && (
+            <div style={s.grid}>
+              {results.map(photo => (
+                <div key={photo.id} style={{ position: 'relative' }}
+                  onMouseEnter={e => {
+                    e.currentTarget.querySelector('img').style.borderColor = '#b556ff';
+                    e.currentTarget.querySelector('.attr').style.opacity = 1;
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.querySelector('img').style.borderColor = 'transparent';
+                    e.currentTarget.querySelector('.attr').style.opacity = 0;
+                  }}
+                >
+                  <img
+                    src={photo.urls.thumb}
+                    alt={photo.alt_description || photo.user.name}
+                    style={s.thumb}
+                    onClick={() => handleSelect(photo)}
+                  />
+                  <span className="attr" style={{ ...s.attribution, opacity: 0, transition: 'opacity 0.15s' }}>
+                    {photo.user.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    };
+
+
+    // ═════════════════════════════════════════════════════════════════════════
+    // CUSTOM WIDGET: header-image
+    // Three tabs: URL paste | Upload (via CMS media library) | Unsplash search
+    // Used for the `src` frontmatter field.
+    // ═════════════════════════════════════════════════════════════════════════
+    const HeaderImageControl = (props) => {
+      const { value, onChange, forID, openMediaLibrary, mediaPaths } = props;
+      const [tab, setTab] = useState('unsplash');
+      const [urlInput, setUrlInput] = useState(value || '');
+
+      // When the CMS media library selection comes back, update our value
+      useEffect(() => {
+        if (!mediaPaths) return;
+        const path = mediaPaths.get
+          ? mediaPaths.get(forID)
+          : mediaPaths[forID];
+        if (path && path !== value) {
+          onChange(path);
+          setUrlInput(path);
+        }
+      }, [mediaPaths, forID]);
+
+      // Keep urlInput in sync when value is set externally
+      useEffect(() => {
+        if (value !== urlInput) setUrlInput(value || '');
+      }, [value]);
+
+      const handleUrlCommit = () => {
+        const v = urlInput.trim();
+        if (v !== value) onChange(v);
+      };
+
+      const openLibrary = () => {
+        if (typeof openMediaLibrary === 'function') {
+          openMediaLibrary({ controlID: forID, value, forImage: true, allowMultiple: false });
+        } else {
+          alert('Media library not available. Paste a URL in the URL tab instead, or upload via the body editor first.');
+        }
+      };
+
+      const s = {
+        wrap: { fontFamily: 'system-ui, sans-serif', border: '1px solid #dee2e6', borderRadius: 8, overflow: 'hidden' },
+        tabs: { display: 'flex', background: '#f8f9fa', borderBottom: '1px solid #dee2e6' },
+        tab: (active) => ({
+          flex: 1, padding: '9px 0', cursor: 'pointer', border: 'none',
+          background: 'none', fontWeight: active ? 600 : 400, fontSize: 13,
+          borderBottom: active ? '2px solid #b556ff' : '2px solid transparent',
+          color: active ? '#b556ff' : '#555',
+        }),
+        body:   { padding: 14 },
+        input:  { width: '100%', padding: '8px 12px', border: '1px solid #ddd', borderRadius: 6, fontSize: 13, boxSizing: 'border-box', marginBottom: 8 },
+        btnPrimary: { padding: '8px 16px', background: '#b556ff', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 13 },
+        btnSecondary: { padding: '8px 16px', background: '#6c757d', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 13, marginLeft: 8 },
+        preview: { marginTop: 12, position: 'relative' },
+        previewImg: { width: '100%', maxHeight: 180, objectFit: 'cover', borderRadius: 6, display: 'block' },
+        clearBtn: {
+          position: 'absolute', top: 6, right: 6,
+          background: 'rgba(0,0,0,0.65)', color: '#fff', border: 'none',
+          borderRadius: 4, padding: '3px 9px', cursor: 'pointer', fontSize: 12,
+        },
+        hint: { fontSize: 11, color: '#888', marginTop: 6 },
+      };
+
+      return (
+        <div style={s.wrap} id={forID}>
+          {/* Tabs */}
+          <div style={s.tabs}>
+            {['unsplash', 'url', 'upload'].map(t => (
+              <button key={t} style={s.tab(tab === t)} onClick={() => setTab(t)}>
+                {{ unsplash: '🔍 Unsplash', url: '🔗 URL', upload: '📁 Upload' }[t]}
+              </button>
+            ))}
+          </div>
+
+          <div style={s.body}>
+            {/* ── Unsplash tab ── */}
+            {tab === 'unsplash' && (
+              <UnsplashSearchPanel
+                onSelect={(url) => { onChange(url); setUrlInput(url); }}
+              />
+            )}
+
+            {/* ── URL tab ── */}
+            {tab === 'url' && (
+              <>
+                <input
+                  style={s.input}
+                  value={urlInput}
+                  onChange={e => setUrlInput(e.target.value)}
+                  onBlur={handleUrlCommit}
+                  onKeyDown={e => e.key === 'Enter' && handleUrlCommit()}
+                  placeholder="https://example.com/image.jpg"
+                  aria-label="Image URL"
+                />
+                <button style={s.btnPrimary} onClick={handleUrlCommit}>Apply</button>
+                {value && (
+                  <button style={s.btnSecondary} onClick={() => { onChange(''); setUrlInput(''); }}>
+                    Clear
+                  </button>
+                )}
+              </>
+            )}
+
+            {/* ── Upload tab ── */}
+            {tab === 'upload' && (
+              <>
+                <p style={s.hint}>
+                  Images are committed directly to <code>static/images/blog/</code> in your repo and served as <code>/images/blog/filename</code>.
+                </p>
+                <button style={s.btnPrimary} onClick={openLibrary}>
+                  Open Media Library
+                </button>
+                <p style={{ ...s.hint, marginTop: 8 }}>
+                  Tip: you can also upload images via the body editor's image toolbar button, then paste the path in the URL tab.
+                </p>
+              </>
+            )}
+
+            {/* ── Current value preview ── */}
+            {value && (
+              <div style={s.preview}>
+                <img
+                  src={value}
+                  alt="Header preview"
+                  style={s.previewImg}
+                  onError={e => { e.currentTarget.style.display = 'none'; }}
+                />
+                <button style={s.clearBtn} onClick={() => { onChange(''); setUrlInput(''); }}>
+                  ✕ Remove
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    };
+
+    const HeaderImagePreview = ({ value }) =>
+      value
+        ? <img src={value} alt="Header" style={{ maxWidth: '100%', borderRadius: 6 }} />
+        : <span style={{ color: '#999', fontSize: 13 }}>No header image</span>;
+
+
+    // ═════════════════════════════════════════════════════════════════════════
+    // EDITOR COMPONENT: inline-image
+    // Appears in the markdown body editor via the "+" component button.
+    // Lets the user search Unsplash OR paste a URL for an inline image.
+    // Output is standard Markdown: ![alt](url)
+    // An optional italic caption becomes a paragraph underneath.
+    // ═════════════════════════════════════════════════════════════════════════
+
+    // We need a small self-contained form for the editor component fields.
+    // Decap CMS renders custom widget fields inside the component panel via
+    // the `fields` array — but the `header-image` widget is already registered,
+    // so the `src` field below will reuse it automatically.
+
+    CMS.registerEditorComponent({
+      id: 'inline-image',
+      label: 'Image (Unsplash / URL)',
+      summary: '{{fields.alt}}',
+      fields: [
+        {
+          label: 'Image',
+          name: 'src',
+          widget: 'header-image',
+          required: true,
+        },
+        {
+          label: 'Alt text',
+          name: 'alt',
+          widget: 'string',
+          required: false,
+          hint: 'Describes the image for screen readers and SEO.',
+        },
+        {
+          label: 'Caption (optional)',
+          name: 'caption',
+          widget: 'string',
+          required: false,
+          hint: 'Appears as italic text beneath the image.',
+        },
+      ],
+      // Match: ![alt](url) optionally followed by _caption_ on next line
+      pattern: /^!\[([^\]]*)\]\(([^)\s]+)\)(?:\n_([^_]+)_)?$/m,
+      fromBlock: (match) => ({
+        alt:     match[1] || '',
+        src:     match[2] || '',
+        caption: match[3] || '',
+      }),
+      toBlock: ({ src, alt, caption }) =>
+        `![${alt || ''}](${src || ''})` + (caption ? `\n_${caption}_` : ''),
+      toPreview: ({ src, alt, caption }) =>
+        `<figure style="margin:16px 0">` +
+        `<img src="${src || ''}" alt="${alt || ''}" style="max-width:100%;border-radius:8px" />` +
+        (caption ? `<figcaption style="text-align:center;font-size:13px;color:#888;margin-top:6px">${caption}</figcaption>` : '') +
+        `</figure>`,
+    });
+
+
+    // ═════════════════════════════════════════════════════════════════════════
+    // Register widgets and boot the CMS
+    // ═════════════════════════════════════════════════════════════════════════
+    CMS.registerWidget('header-image', HeaderImageControl, HeaderImagePreview);
+    CMS.init();
+
+    // ── Dark mode DOM walker ───────────────────────────────────────────────
+    // CSS cannot reliably override styled-components (class specificity wins).
+    // Instead we use getComputedStyle + el.style.setProperty('...','important')
+    // which is inline-style !important — beats everything.
+    (function () {
+      const DARK    = '#04010c';
+      const SURFACE = '#0d0820';
+      const TEXT    = '#e2e8f0';
+      const MUTED   = '#94a3b8';
+
+      // Perceived luminance 0-1 using WCAG relative-luminance formula
+      function lum(rgb) {
+        if (!rgb) return null;
+        const m = rgb.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+        if (!m) return null;
+        return (0.299 * +m[1] + 0.587 * +m[2] + 0.114 * +m[3]) / 255;
+      }
+
+      const SKIP = new Set(['IMG','PICTURE','VIDEO','CANVAS','SVG','PATH',
+                            'CIRCLE','RECT','LINE','POLYLINE','POLYGON',
+                            'SCRIPT','STYLE','LINK','BR','HR']);
+
+      function paintEl(el) {
+        if (SKIP.has(el.tagName)) return;
+        const s  = window.getComputedStyle(el);
+        const bg = lum(s.backgroundColor);
+        const fg = lum(s.color);
+
+        if (bg !== null && bg > 0.82) {
+          // Structural elements get slightly lighter surface colour
+          const role = el.getAttribute('role') || '';
+          const tag  = el.tagName;
+          const isSurface = tag === 'HEADER' || tag === 'NAV' || tag === 'ASIDE'
+                         || role === 'banner' || role === 'navigation'
+                         || role === 'complementary';
+          el.style.setProperty('background-color', isSurface ? SURFACE : DARK, 'important');
+        }
+        // Dark text would be invisible on the new dark background
+        if (fg !== null && fg < 0.25) {
+          const role = el.getAttribute('role') || '';
+          el.style.setProperty('color', role === 'navigation' ? MUTED : TEXT, 'important');
+        }
+      }
+
+      let pending = false;
+      function paintAll() {
+        if (pending) return;
+        pending = true;
+        requestAnimationFrame(() => {
+          pending = false;
+          const root = document.getElementById('nc-root')
+                    || document.getElementById('cms-root')
+                    || document.body;
+          root.querySelectorAll('*').forEach(paintEl);
+        });
+      }
+
+      function init() {
+        const root = document.getElementById('nc-root')
+                  || document.getElementById('cms-root')
+                  || document.body;
+        new MutationObserver(paintAll)
+          .observe(root, { childList: true, subtree: true });
+        paintAll();
+      }
+
+      // Multiple entry points to survive React's async rendering
+      requestAnimationFrame(() => requestAnimationFrame(init));
+      setTimeout(init,    200);
+      setTimeout(paintAll, 600);
+      setTimeout(paintAll, 1500);
+    })();
+  </script>
+
+</body>
+</html>
