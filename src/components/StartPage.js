@@ -128,7 +128,7 @@ export default function StartPage({ id }) {
               <FaGithub size={22} />
             </a>
             <a
-              href="https://www.linkedin.com/in/abisade-ogunwoolu-0bb804155/"
+              href="https://https://www.linkedin.com/in/abisade-o-0bb804155"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"

@@ -26,7 +26,7 @@ export default function Layout({ children }) {
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/abisade-ogunwoolu-0bb804155/"
+              href="https://www.linkedin.com/in/abisade-o-0bb804155"
               target="_blank"
               rel="noreferrer"
               className="text-xs text-gray-700 hover:text-gray-400 transition-colors"
