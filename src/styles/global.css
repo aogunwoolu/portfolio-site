@@ -33,12 +33,11 @@ a{
   text-decoration: none;
 }
 
-a,
-button,
-[role="button"],
-[onClick],
-label[for],
-select,
+a, a *,
+button, button *,
+[role="button"], [role="button"] *,
+label[for], label[for] *,
+select, select *,
 input[type="submit"],
 input[type="button"],
 input[type="reset"],
@@ -49,7 +48,6 @@ input[type="radio"] {
 
 a:hover{
   color: white;
-  cursor: pointer;
 }
 
 
