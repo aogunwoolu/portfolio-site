@@ -19,7 +19,6 @@ backend:
   branch: master
   auth_type: pkce
   app_id: Ov23livqjrGqShlnnNey  # ← replace with your GitHub OAuth App Client ID
-  base_url: https://github.com  # prevents fallback to Netlify OAuth proxy
 
 # Custom logo — shown on the login screen (logo_url works in Decap v3.3.x)
 logo_url: /admin/logo.svg
