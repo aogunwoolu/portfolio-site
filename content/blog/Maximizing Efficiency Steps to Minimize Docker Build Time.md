@@ -1,7 +1,7 @@
 ---
 title: "Maximising Efficiency: Steps to Minimise Docker Build Time"
 description: "As a developer, it is crucial to have an efficient docker build process to save time and streamline the development and testing of applications. In this blog, we will explore various steps to optimise the dockerfile build process, reduce build time, install necessary dependencies, and create lightweight and efficient docker images."
-src: thumbnails/docker.png
+src: /thumbnails/docker.png
 author: Abisade Ogunwoolu
 slug: maximising-efficiency-steps-to-minimise-docker-build-time
 date: 2023-10-29

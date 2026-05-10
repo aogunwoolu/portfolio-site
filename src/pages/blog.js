@@ -85,7 +85,7 @@ const BlogPage = props => {
               const src = post.node.frontmatter.src || ""
               // normalize frontmatter path: "./images/gatsby.png" → "gatsby.png"
               // relativePath in allFile is relative to the source root (content/images/)
-              const normalized = src.replace(/^\.\/+/, "").replace(/^images\//, "")
+              const normalized = src.replace(/^\.\/+/, "").replace(/^\/+/, "").replace(/^images\//, "")
               const file = images.find(n => n.relativePath === normalized)
               const imageData = file ? getImage(file.childImageSharp) : null
 

@@ -1,7 +1,7 @@
 ---
 title: My first blog post
 description: This is my first blog post
-src: thumbnails/first-post.jpg
+src: /thumbnails/first-post.jpg
 author: Abisade Ogunwoolu
 slug: start-post
 date: 2022-04-12
