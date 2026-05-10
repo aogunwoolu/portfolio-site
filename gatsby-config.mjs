@@ -1,6 +1,10 @@
-const rehypePrism = require('rehype-prism-plus');
+import rehypePrism from 'rehype-prism-plus';
+import { fileURLToPath } from 'node:url';
+import { dirname } from 'node:path';
 
-module.exports = {
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const config = {
   plugins: [
     {
       resolve: 'gatsby-source-filesystem',
@@ -13,7 +17,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/content/images/`, 
+        path: `${__dirname}/content/images/`,
       },
     },
     'gatsby-plugin-image',
@@ -39,7 +43,7 @@ module.exports = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         rehypePlugins: [
-          [rehypePrism, { showLineNumbers: true, ignoreMissing: true }]
+          [rehypePrism, { showLineNumbers: true, ignoreMissing: true }],
         ],
         remarkPlugins: [],
         gatsbyRemarkPlugins: [
@@ -57,3 +61,5 @@ module.exports = {
     },
   ],
 };
+
+export default config;
