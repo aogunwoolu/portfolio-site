@@ -87,7 +87,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const blogTemplate = path.resolve('./src/components/blog-post.js')
 
-  for (const { node } of data.posts.edges) {
+  for (const { node } of (data?.posts?.edges || [])) {
 
     createPage({
       path: `/post/${node.frontmatter.slug}/`,

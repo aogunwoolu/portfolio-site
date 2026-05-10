@@ -1,7 +1,7 @@
 ---
 title: Gatsby Development
 description: My Journey through developing this website through Gatsby, this includes frontend logic, styling, databases and the general Gatsby annoyances. Join me on my path to creating the very website you read this on.
-src: https://i.imgur.com/96NgPIc.png
+src: thumbnails/gatsby.png
 author: Abisade Ogunwoolu
 slug: gatsby-development
 date: 2023-04-12

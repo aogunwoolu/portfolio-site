@@ -1,7 +1,7 @@
 ---
 title: Database Creation With GORM & GraphQL
 description: Playing wround with normalisation during the creation process of the database. Then going about implementing with an object relational model with Golang, and relating it to a GraphQL server. 
-src: https://i.imgur.com/XAysqpa.png
+src: thumbnails/GraphQ.png
 author: Abisade Ogunwoolu
 slug: database-gorm-and-gql
 date: 2023-04-29

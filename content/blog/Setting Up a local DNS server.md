@@ -1,7 +1,7 @@
 ---
 title: Setting Up a local DNS server
 description: In order to resolve dns names on my local network, I decided to set up a local DNS server. This post documents the steps I took to set up a local DNS server using bind-9. 
-src: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxm_z9oG2fGAtdP8-NnnLPpbrLh95Dt66zBA&s
+src: thumbnails/bind9.jpg
 author: Abisade Ogunwoolu
 slug: setting-up-bind-9-dns-server
 date: 2025-07-20

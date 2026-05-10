@@ -1,7 +1,7 @@
 ---
 title: Efficient Testing with Cypress Locally and on a Concourse Pipeline
 description: Recently I have been exposed to a testing framework called cypress, after trying out selenium and not being too impressed with it, I decided to give cypress a try. I was not disappointed. This was my journey with cypress.
-src: https://i.imgur.com/f44Q5tC.png
+src: thumbnails/cypress.png
 author: Abisade Ogunwoolu
 slug: cypress-and-concourse
 date: 2023-07-01

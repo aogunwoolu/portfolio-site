@@ -1,7 +1,7 @@
 ---
 title: Deploying A NextJS Application Using A Lambda
 description: Using an aws lambda to deploy a NextJS application with cloudfront routing between static (s3) and dynamic (λ) content. This was an exploration of the aws provided CDN
-src: https://i.imgur.com/qVsahwd.png
+src: thumbnails/lambda.png
 author: Abisade Ogunwoolu
 slug: lambda-cloudfront-site-host
 date: 2024-06-29

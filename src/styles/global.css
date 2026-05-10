@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "~prismjs/themes/prism.css";
+@import "~prismjs/themes/prism-tomorrow.css";
 
 * {
   margin: 0;
@@ -112,4 +112,40 @@ h3 > strong.skill-array {
 
 .icon:hover {
   transform: scale(1.1); /* increase the size of the icon by 10% on hover */
+}
+
+/* Code block terminal window styling */
+.gatsby-highlight {
+  position: relative;
+  background: #1d1f21;
+  border-radius: 12px;
+  padding: 2.75rem 1.5rem 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.gatsby-highlight::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff5f56;
+  box-shadow: 20px 0 0 #ffbd2e, 40px 0 0 #27c93f;
+}
+
+.gatsby-highlight pre {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  border-radius: 0;
+}
+
+.gatsby-highlight code {
+  background: transparent;
+  font-size: 0.875rem;
+  line-height: 1.6;
 }

@@ -174,8 +174,10 @@
         wrap: { display: 'flex', flexDirection: 'column', gap: 8 },
         row: { display: 'flex', gap: 8 },
         input: {
-          flex: 1, padding: '7px 12px', border: '1px solid #ddd',
+          flex: 1, padding: '7px 12px',
+          border: '1px solid rgba(181,86,255,0.25)',
           borderRadius: 6, fontSize: 13, outline: 'none',
+          background: '#0d0820', color: '#e2e8f0',
         },
         btn: {
           padding: '7px 14px', background: '#b556ff', color: '#fff',
@@ -200,7 +202,7 @@
           padding: '2px 4px', borderRadius: '0 0 4px 4px',
           whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
         },
-        error: { color: '#c0392b', fontSize: 12, margin: '4px 0' },
+        error: { color: '#f87171', fontSize: 12, margin: '4px 0' },
       };
 
       return (
@@ -291,18 +293,18 @@
       };
 
       const s = {
-        wrap: { fontFamily: 'system-ui, sans-serif', border: '1px solid #dee2e6', borderRadius: 8, overflow: 'hidden' },
-        tabs: { display: 'flex', background: '#f8f9fa', borderBottom: '1px solid #dee2e6' },
+        wrap: { fontFamily: 'system-ui, sans-serif', border: '1px solid rgba(181,86,255,0.2)', borderRadius: 8, overflow: 'hidden', background: '#110c22' },
+        tabs: { display: 'flex', background: '#0d0820', borderBottom: '1px solid rgba(181,86,255,0.15)' },
         tab: (active) => ({
           flex: 1, padding: '9px 0', cursor: 'pointer', border: 'none',
-          background: 'none', fontWeight: active ? 600 : 400, fontSize: 13,
+          background: 'transparent', fontWeight: active ? 600 : 400, fontSize: 13,
           borderBottom: active ? '2px solid #b556ff' : '2px solid transparent',
-          color: active ? '#b556ff' : '#555',
+          color: active ? '#b556ff' : '#94a3b8',
         }),
         body:   { padding: 14 },
-        input:  { width: '100%', padding: '8px 12px', border: '1px solid #ddd', borderRadius: 6, fontSize: 13, boxSizing: 'border-box', marginBottom: 8 },
+        input:  { width: '100%', padding: '8px 12px', border: '1px solid rgba(181,86,255,0.2)', borderRadius: 6, fontSize: 13, boxSizing: 'border-box', marginBottom: 8, background: '#0d0820', color: '#e2e8f0' },
         btnPrimary: { padding: '8px 16px', background: '#b556ff', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 13 },
-        btnSecondary: { padding: '8px 16px', background: '#6c757d', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer', fontSize: 13, marginLeft: 8 },
+        btnSecondary: { padding: '8px 16px', background: 'transparent', color: '#94a3b8', border: '1px solid rgba(100,116,139,0.3)', borderRadius: 6, cursor: 'pointer', fontSize: 13, marginLeft: 8 },
         preview: { marginTop: 12, position: 'relative' },
         previewImg: { width: '100%', maxHeight: 180, objectFit: 'cover', borderRadius: 6, display: 'block' },
         clearBtn: {
@@ -310,7 +312,7 @@
           background: 'rgba(0,0,0,0.65)', color: '#fff', border: 'none',
           borderRadius: 4, padding: '3px 9px', cursor: 'pointer', fontSize: 12,
         },
-        hint: { fontSize: 11, color: '#888', marginTop: 6 },
+        hint: { fontSize: 11, color: '#64748b', marginTop: 6 },
       };
 
       return (
@@ -394,18 +396,17 @@
 
 
     // ═════════════════════════════════════════════════════════════════════════
+    // Register widgets BEFORE editor components and CMS.init()
+    // ═════════════════════════════════════════════════════════════════════════
+    CMS.registerWidget('header-image', HeaderImageControl, HeaderImagePreview);
+
+    // ═════════════════════════════════════════════════════════════════════════
     // EDITOR COMPONENT: inline-image
     // Appears in the markdown body editor via the "+" component button.
     // Lets the user search Unsplash OR paste a URL for an inline image.
     // Output is standard Markdown: ![alt](url)
     // An optional italic caption becomes a paragraph underneath.
     // ═════════════════════════════════════════════════════════════════════════
-
-    // We need a small self-contained form for the editor component fields.
-    // Decap CMS renders custom widget fields inside the component panel via
-    // the `fields` array — but the `header-image` widget is already registered,
-    // so the `src` field below will reuse it automatically.
-
     CMS.registerEditorComponent({
       id: 'inline-image',
       label: 'Image (Unsplash / URL)',
@@ -450,9 +451,8 @@
 
 
     // ═════════════════════════════════════════════════════════════════════════
-    // Register widgets and boot the CMS
+    // Boot the CMS
     // ═════════════════════════════════════════════════════════════════════════
-    CMS.registerWidget('header-image', HeaderImageControl, HeaderImagePreview);
     CMS.init();
 
     // ── Dark mode DOM walker ───────────────────────────────────────────────

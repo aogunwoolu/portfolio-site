@@ -26,6 +26,12 @@ const Blog = ({ data }) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    return () => {
+      speechSynthesis.cancel()
+    }
+  }, [])
+
   function calculate_min_read(html) {
     const wordCount = html.replace(/<[^>]+>/g, "").split(/\s+/).length
     return Math.ceil(wordCount / 200)
@@ -36,6 +42,7 @@ const Blog = ({ data }) => {
     const text = doc.body.textContent || ""
     const speech = new SpeechSynthesisUtterance(text)
     speech.lang = "en-US"
+    speech.onend = () => setIsReading(false)
     speechSynthesis.speak(speech)
     setIsReading(true)
   }
@@ -158,8 +165,9 @@ const Blog = ({ data }) => {
               className="
                 prose-container
                 [&_a]:text-[#b556ff] [&_a:hover]:text-[#d08aff]
-                [&_code]:text-white [&_code]:font-mono [&_code]:bg-[#1a1228] [&_code]:rounded-md [&_code]:py-0.5 [&_code]:px-1.5 [&_code]:text-sm
-                [&_pre]:rounded-xl [&_pre]:overflow-x-auto [&_pre]:my-6
+                [&_code]:font-mono [&_code]:text-sm
+                [&_:not(pre)>code]:text-white [&_:not(pre)>code]:bg-[#1a1228] [&_:not(pre)>code]:rounded-md [&_:not(pre)>code]:py-0.5 [&_:not(pre)>code]:px-1.5
+                [&_.gatsby-highlight]:my-6
                 [&_img]:w-full [&_img]:rounded-xl [&_img]:my-6 [&_img]:object-cover
                 [&_h1]:text-3xl [&_h1]:font-bold [&_h1]:text-white [&_h1]:my-6
                 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:mt-10 [&_h2]:mb-4
