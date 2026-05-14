@@ -28,6 +28,14 @@ const config = {
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1035,
+              linkImagesToOriginal: false,
+              withWebp: true,
+            },
+          },
+          {
             resolve: 'gatsby-remark-prismjs',
             options: {
               classPrefix: 'language-',
