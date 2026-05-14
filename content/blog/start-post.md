@@ -13,7 +13,7 @@ Welcome to my personal portfolio website! This is a showcase of my skills, accom
 
 This website is a comprehensive collection of my work in the tech industry, including software development, data analysis, machine learning, and more. It’s a place to explore my past and current projects, get to know my skills and experience, and learn more about my contributions to the tech industry.
 
-![website](https://i.imgur.com/fzFIeEC.png)
+![website](../images/blog/start-post/1.png)
 
 Whether you’re an industry expert, a fellow tech enthusiast, or just someone interested in learning more about the latest trends and technologies, my personal portfolio website has something for you. Here are some of the highlights:
 
