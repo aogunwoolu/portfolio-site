@@ -13,7 +13,7 @@ tags:
 # **Introduction**
 Automated testing plays a crucial role in software development, ensuring the quality and reliability of our applications. Today, I want to share with you my exciting journey into the world of automated testing, where I discovered the wonders of [Cypress testing](https://www.cypress.io/). Join me as I recount my experience with Cypress, both on my local machine and on a Concourse CI/CD pipeline. Trust me, it's a tale filled with effortless testing and smoother development processes.
 
-![cypress](https://i.imgur.com/FA8qOHC.gif)
+![cypress](../images/blog/cypress-and-concourse/1.gif)
 
 # **Setting Up Local Cypress Testing**
 Picture this: I had heard whispers about Cypress and its magic. So, I decided to give it a try. Installing Cypress on my local machine was a breeze. I eagerly dived into writing Cypress tests, and boy, was I amazed! All that was needed was a simple `npm install` command, and I was ready to go.
@@ -43,7 +43,7 @@ The cypress docs provided worker minimum requirements:
     - Any additional infrastructure (Redis, Kafka, etc..)
 
 These requirements were not met by the default worker provided by Concourse. I had to create a custom worker to meet this:
-![custom worker](https://i.imgur.com/4I2c1MN.gif)
+![custom worker](../images/blog/cypress-and-concourse/2.gif)
 
 There were additional challenges I faced along the way. I had to learn how to manage test environments and dependencies effectively. I also had to optimize resource allocation and caching mechanisms to boost test execution speed. I learned to integrate test coverage and code quality checks into the pipeline, elevating the overall quality of my codebase. I discovered the power of parallelization, enabling me to run tests in parallel and accelerate the testing cycle. I even learned how to run tests on different browsers and operating systems, ensuring cross-browser compatibility and a consistent user experience.
 

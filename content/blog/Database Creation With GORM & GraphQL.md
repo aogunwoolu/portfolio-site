@@ -27,7 +27,7 @@ Secondly, we needed to ensure that all non-key attributes or columns were depend
 
 The third normal form is the next level of normalization that we aim to achieve after satisfying the requirements of the first two levels. This level requires that all non-key attributes in the table are dependent only on the primary key column(s) and not on any other non-key attributes. In other words, every non-key column must be dependent only on the primary key column(s) and not on any other non-key columns. This eliminates transitive dependencies, which can lead to data inconsistencies and anomalies. Achieving the third normal form helps to ensure data consistency, accuracy, and efficiency in a relational database.
 
-![normalisation](https://i.imgur.com/kL1Z94N.png)
+![normalisation](../images/blog/database-gorm-and-gql/1.png)
 
 Then we created a diagram that showed all of the entities and their attributes. Creating a diagram that shows all of the entities and their attributes is an important step in database design. The diagram provides a visual representation of the relationships between different entities and the attributes associated with them. It helps to organize the data into a structured format that is easy to understand and maintain.
 
@@ -38,7 +38,7 @@ By having a clear and concise diagram, we could easily visualize the structure o
 # **GORM & GraphQL**
 GORM (Go Object Relational Mapping) is a popular Object Relational Mapping library for Go programming language. It provides a simple and efficient way to interact with relational databases. GraphQL is a query language for APIs that provides a powerful and flexible way to retrieve data from the server. Together, they offer a powerful solution for building robust and efficient database systems.
 
-![GraphQL vs REST](https://i.imgur.com/dy13DA5.png)
+![GraphQL vs REST](../images/blog/database-gorm-and-gql/2.png)
 
 To implement a database with GORM and GraphQL, we first define the schema for our GraphQL API. This schema describes the types and fields available in our API, and serves as a contract between the client and the server. We then use GORM to define the models for our database tables. These models represent the entities and relationships in our database and provide an easy way to interact with the database.
 

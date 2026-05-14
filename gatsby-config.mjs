@@ -35,6 +35,7 @@ const config = {
               withWebp: true,
             },
           },
+          'gatsby-remark-copy-linked-files',
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
@@ -63,6 +64,7 @@ const config = {
               withWebp: true,
             },
           },
+          'gatsby-remark-copy-linked-files',
         ],
         extensions: ['.mdx', '.md'],
       },

@@ -14,7 +14,7 @@ tags:
 While setting up [visual studio code server](https://github.com/coder/code-server) on my respberry pi, i wanted to access the server using a domain name instead of the ip address. I wasn't too sure about how to go about it, so i went for creating a local DNS network for my home network. I used bind-9 to set up the DNS server. Bind-9 is a popular DNS server software that is used to resolve domain names to IP addresses on the internet. It is a powerful and flexible tool that can be configured to meet the needs of any network which i felt was perfect for my needs!
 
 I first designed the initial architecture for my local network. This was what i came up with:
-![Local DNS Architecture](https://i.imgur.com/qzRGYo8.png)
+![Local DNS Architecture](../images//blog/setting-up-bind-9-dns-server/1.png)
 
 The steps show the journey that a DNS request takes from client throughout the network, with my raspberry pi acting as a central hub that directs traffic to the bind9 server as my router does not support direct DNS configuration. The bind9 server then resolves the domain name to the IP address of the service running on the raspberry pi, allowing the client to access the service using the domain name.
 
